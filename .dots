@@ -7,6 +7,9 @@ function runDots() {
     # Keep-alive: update existing `sudo` time stamp until the script has finished
     while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+    # Change Shell
+    chsh -s /bin/zsh
+
     # Run sections based on command line arguments
     for ARG in "$@"
     do
