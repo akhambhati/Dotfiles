@@ -68,6 +68,7 @@ brew install webkit2png
 brew install zopfli
 brew install pkg-config libffi
 brew install pandoc
+brew install tmux
 
 # Install more recent versions of some OS X tools.
 brew install vim —-override-system-vi —-with-lua
