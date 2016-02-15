@@ -63,7 +63,16 @@ function runDots() {
             echo “Setting up Python data development environment.”
             echo “—————————————————————————————”
             echo “”
-            ./osx.sh
+            ./pydata.sh
+        fi
+        if [ $ARG == “vim” ] || [ $ARG == “all” ]; then
+            # Run the vim.sh Script
+            echo “”
+            echo “—————————————————————————————”
+            echo “Setting up Python data development environment.”
+            echo “—————————————————————————————”
+            echo “”
+            ./vim.sh
         fi
     done
 

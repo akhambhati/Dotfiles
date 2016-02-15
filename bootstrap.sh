@@ -4,9 +4,13 @@ git pull origin master;
 
 function doIt() {
     rsync —exclude “.git/“ —exclude “.gitsubmodules” \
-        —exclude “./zsh” \
-        —exclude “.DS_Store” —exclude “bootstrap.sh” \
+        —exclude “./zsh” -exclude “./conda” \
+        —exclude “.DS_Store” —exclude “*.sh” \ —exclude “./fonts” \
         —exclude “README.md” —exclude “LICENSE” -avh —no-perms . ~;
+
+    mkdir ~/Developer
+    mkdir ~/Remotes
+    ln -s *.otf ~/Library/Fonts
     source ~/.zshrc;
 }
 
