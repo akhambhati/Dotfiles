@@ -3,42 +3,55 @@ export DOTFILES=$HOME/Dotfiles
 export ZSH=$DOTFILES/zsh
 
 # Load Antigen
-source $HOME/Dotfiles/zsh/antigen/antigen.zsh
+. $HOME/Dotfiles/zsh/antigen/antigen.zsh
 
 # Load the oh-my-zsh’s library
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell’s oh-my-zsh)
-antigen bundle autojump
-antigen bundle brew
-antigen bundle brew-cask
-antigen bundle common-aliases
-antigen bundle compleat
-antigen bundle git
-antigen bundle git-extras
-antigen bundle git-flow
-antigen bundle osx
-antigen bundle pip
-antigen bundle tmux
-antigen bundle web-search
+antigen bundle autojump        # Enable auto jump when installed with homebrew
+antigen bundle brew            # Adds brew completion, enables the brews command   
+antigen bundle common-aliases  # Collection of useful zsh aliases ls et al.
+antigen bundle compleat        # Bash completion
+antigen bundle git             # Adds git aliases
+antigen bundle git-extras      # Tab after various git commands autofills fields
+antigen bundle git-flow        # Enforces the git-flow model
+antigen bundle osx             # Interfaces with the OS X ui environment
+antigen bundle pip             # PIP completion
+antigen bundle tmux            # Can set various tux options
+antigen bundle web-search      # Can do shell-based web searches
+
+# Tracks your most used directories, based on frequency.
 antigen bundle z
-antigen bundle zsh-users/zsh-syntax-highlighting
+add-zsh-hook precmd _z_precmd
+function _z_precmd {
+    _z --add "$PWD"
+}
+
+# bind UP and DOWN arrow keys for History search
 antigen bundle zsh-users/zsh-history-substring-search
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# syntax highlighting bundle
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# autocomplete
+antigen bundle tarruda/zsh-autosuggestions
+
 
 # Load the theme
-antigen theme honukai
+antigen bundle oskarkrawczyk/honukai-iterm-zsh
+antigen theme oskarkrawczyk/honukai-iterm-zsh honukai
 
 # Tell antigen that you’re done
 antigen apply
 
-# Setup zsh-autosuggestions
-source $HOME/Dotfiles/zsh/zsh-autosuggestions/dist/autosuggestions.zsh
+# Automatically list directory contents on `cd`.
+auto-ls () { ls; }
+chpwd_functions=( auto-ls $chpwd_functions )
 
-# Enable autosuggestions automatically
-zle-line-init() {
-    zle autosuggest-start
-}
-zle -N zle-line-init
 
 # Setup environmental variables
 source $ZSH/env.zsh

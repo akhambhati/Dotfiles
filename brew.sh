@@ -103,12 +103,8 @@ brew cask install --appdir="/Applications" evernote
 brew cask install --appdir="/Applications" gimp
 brew cask install --appdir="/Applications" inkscape
 brew cask install —-appdir=“/Applications” mendeley-desktop
-
-#Remove comment to install LaTeX distribution MacTeX
+brew cask install —-appdir=“/Applications” spotify
 brew cask install --appdir="/Applications" mactex
-
-# Link cask apps to Alfred
-brew cask alfred link
 
 # Remove outdated versions from the cellar.
 brew cleanup
