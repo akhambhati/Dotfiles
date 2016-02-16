@@ -16,7 +16,7 @@ function runDots() {
             echo “Syncing the Dotfiles repo to your local machine.”
             echo “—————————————————————————————”
             echo “”
-            ./bootstrap.sh
+            sh bootstrap.sh
         fi
         if [ $ARG == “osxprep” ] || [ $ARG == “all” ]; then
             echo “”
@@ -24,7 +24,7 @@ function runDots() {
             echo “Updating OS X and installing Xcode command line tools.”
             echo “—————————————————————————————”
             echo “”
-            ./osxprep.sh
+            sh osxprep.sh
         fi
         if [ $ARG == “brew” ] || [ $ARG == “all” ]; then
             # Run the brew.sh Script
@@ -37,7 +37,7 @@ function runDots() {
             echo “This might awhile to complete, as some formulae need to be installed from source.”
             echo “—————————————————————————————”
             echo “”
-            ./brew.sh
+            sh brew.sh
         fi
         if [ $ARG == “osx” ] || [ $ARG == “all” ]; then
             # Run the osx.sh Script
@@ -51,7 +51,7 @@ function runDots() {
             echo “Setting sensible OS X defaults.”
             echo “—————————————————————————————”
             echo “”
-            ./osx.sh
+            sh osx.sh
         fi
         if [ $ARG == “pydata” ] || [ $ARG == “all” ]; then
             # Run the pydata.sh Script
@@ -60,7 +60,7 @@ function runDots() {
             echo “Setting up Python data development environment.”
             echo “—————————————————————————————”
             echo “”
-            ./pydata.sh
+            sh pydata.sh
         fi
     done
 
@@ -69,13 +69,13 @@ function runDots() {
     echo “—————————————————————————————”
 }
 
-if [[ $SHELL == ‘/usr/bin/bash’ ]]; then
-    # Change shell
-    chsh -s /usr/bin/zsh
+if [ $SHELL = /bin/bash ]; then
+    echo “Changing shell to ZSH…”
+    chsh -s /bin/zsh
     exec su - $USER
 fi
 
-echo -n “This script may overwrite existing files in your home directory. Are you sure?”
+echo “This script may overwrite existing files in your home directory. Are you sure?”
 read REPLY
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     runDots “$@”
