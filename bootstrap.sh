@@ -10,7 +10,6 @@ function doIt() {
 
     mkdir ~/Developer
     mkdir ~/Remotes
-    ln -s *.otf ~/Library/Fonts
     source ~/.zshrc;
 }
 
