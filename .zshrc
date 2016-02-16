@@ -23,6 +23,7 @@ antigen bundle web-search      # Can do shell-based web searches
 
 # Tracks your most used directories, based on frequency.
 antigen bundle z
+autoload -Uz add-zsh-hook
 add-zsh-hook precmd _z_precmd
 function _z_precmd {
     _z --add "$PWD"
