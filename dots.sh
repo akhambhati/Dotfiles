@@ -39,20 +39,6 @@ function runDots() {
             echo “”
             sh brew.sh
         fi
-        if [ $ARG == “osx” ] || [ $ARG == “all” ]; then
-            # Run the osx.sh Script
-            # I strongly suggest you read through commented osx.sh
-            # source file and tweak any settings based on your personal
-            # preferences. The script defaults are intended for you to customize.
-            # For example, if you are not running an SSD you might want to change
-            # some of the settings listed in the SSD section.
-            echo “”
-            echo “—————————————————————————————”
-            echo “Setting sensible OS X defaults.”
-            echo “—————————————————————————————”
-            echo “”
-            sh osx.sh
-        fi
         if [ $ARG == “pydata” ] || [ $ARG == “all” ]; then
             # Run the pydata.sh Script
             echo “”
