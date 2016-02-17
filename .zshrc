@@ -51,6 +51,7 @@ chpwd_functions=( auto-ls $chpwd_functions )
 
 
 # Setup environmental variables
+source $ZSH/alias.zsh
 source $ZSH/env.zsh
 source $ZSH/shortcut.zsh
 source $ZSH/bkeys.zsh

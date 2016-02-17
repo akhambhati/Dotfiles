@@ -36,10 +36,6 @@ brew install gnu-sed --with-default-names
 # Install `wget` with IRI support.
 brew install wget --with-iri
 
-# Install Python
-brew install python
-brew install python3
-
 # Install ruby-build and rbenv
 brew install ruby-build
 brew install rbenv
@@ -47,6 +43,7 @@ LINE='eval "$(rbenv init -)"'
 grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
 
 # Install other useful binaries.
+brew install cmake
 brew install ack
 brew install dark-mode
 brew install git
@@ -69,9 +66,9 @@ brew install zopfli
 brew install pkg-config libffi
 brew install pandoc
 brew install tmux
+brew install htop
 
 # Install more recent versions of some OS X tools.
-brew install vim --with-lua
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen

@@ -298,7 +298,7 @@
 	<key>NSColorPanelMode</key>
 	<string>4</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Dotfiles/zsh/honukai-iterm-zsh</string>
+	<string>~/Dotfiles/zsh/honukai_theme</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 459}</string>
 	<key>NSNavPanelExpandedSizeForSaveMode</key>
@@ -1100,7 +1100,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/akhambhati/Dotfiles/zsh/honukai-iterm-zsh</string>
+	<string>/Users/akhambhati/Dotfiles/zsh/honukai_theme</string>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
