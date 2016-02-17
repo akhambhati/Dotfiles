@@ -99,9 +99,10 @@ brew cask install --appdir="/Applications" dropbox
 brew cask install --appdir="/Applications" evernote
 brew cask install --appdir="/Applications" gimp
 brew cask install --appdir="/Applications" inkscape
-brew cask install --appdir=“/Applications” mendeley-desktop
-brew cask install --appdir=“/Applications” spotify
+brew cask install --appdir="/Applications" mendeley-desktop
+brew cask install --appdir="/Applications" spotify
 brew cask install --appdir="/Applications" mactex
+brew cask install --appdir="/Applications" bittorrent-sync
 
 # Remove outdated versions from the cellar.
 brew cleanup
