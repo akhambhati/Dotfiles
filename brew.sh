@@ -71,7 +71,7 @@ brew install pandoc
 brew install tmux
 
 # Install more recent versions of some OS X tools.
-brew install vim —-override-system-vi —-with-lua
+brew install vim --with-lua
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
@@ -102,8 +102,8 @@ brew cask install --appdir="/Applications" dropbox
 brew cask install --appdir="/Applications" evernote
 brew cask install --appdir="/Applications" gimp
 brew cask install --appdir="/Applications" inkscape
-brew cask install —-appdir=“/Applications” mendeley-desktop
-brew cask install —-appdir=“/Applications” spotify
+brew cask install --appdir=“/Applications” mendeley-desktop
+brew cask install --appdir=“/Applications” spotify
 brew cask install --appdir="/Applications" mactex
 
 # Remove outdated versions from the cellar.

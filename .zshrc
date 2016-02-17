@@ -3,7 +3,7 @@ export DOTFILES=$HOME/Dotfiles
 export ZSH=$DOTFILES/zsh
 
 # Load Antigen
-. $HOME/Dotfiles/zsh/antigen/antigen.zsh
+. $DOTFILES/zsh/antigen/antigen.zsh
 
 # Load the oh-my-zsh’s library
 antigen use oh-my-zsh
@@ -29,18 +29,14 @@ function _z_precmd {
     _z --add "$PWD"
 }
 
-# bind UP and DOWN arrow keys for History search
+# History search
 antigen bundle zsh-users/zsh-history-substring-search
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # syntax highlighting bundle
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # autocomplete
 antigen bundle tarruda/zsh-autosuggestions
-
 
 # Load the theme
 antigen bundle oskarkrawczyk/honukai-iterm-zsh
@@ -57,5 +53,4 @@ chpwd_functions=( auto-ls $chpwd_functions )
 # Setup environmental variables
 source $ZSH/env.zsh
 source $ZSH/shortcut.zsh
-
-
+source $ZSH/bkeys.zsh
