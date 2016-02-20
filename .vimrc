@@ -32,6 +32,7 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'nvie/vim-flake8'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mbbill/undotree'
@@ -48,16 +49,15 @@ call vundle#end()		" Required
 
 " General {
     set encoding=utf-8
-    set mouse=a                             " Allow mouse controls in UI
     filetype plugin indent on               " Autodetect filetypes
-    set clipboard=unnamed                   " Use the system clipboard in conjunction with yank et al.
-    set virtualedit=onemore                 " Cursor beyond last character
-    set history=1000
-    set spell                               " Turn on spell check
-    set hidden                              " Buffer switching without saving
-    set iskeyword-=.
-    set iskeyword-=#
-    set iskeyword-=-
+    "set clipboard=unnamed                   " Use the system clipboard in conjunction with yank et al.
+    "set virtualedit=onemore                 " Cursor beyond last character
+    "set history=1000
+    "set spell                               " Turn on spell check
+    "set hidden                              " Buffer switching without saving
+    "set iskeyword-=.
+    "set iskeyword-=#
+    "set iskeyword-=-
 
     " Restore cursor to file position previous editing session
     function! ResCur()
@@ -76,6 +76,8 @@ call vundle#end()		" Required
     set undofile                " So is persistent undo ...
     set undolevels=1000         " Maximum number of changes that can be undone
     set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
+
+    au FocusLost * :wa
 " }
 " --------------------------------------------------------------------------------------------
 
@@ -115,6 +117,7 @@ call vundle#end()		" Required
     set winminheight=0                      " Windows can be 0 line high
     set ignorecase                          " Case insensitive search
     set smartcase                           " Case sensitive when uc present
+    set gdefault                            " Replace globally
     set wildmenu                            " Show list instead of just completing
     set wildmode=list:longest,full          " Command <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]           " Backspace and cursor keys wrap too
@@ -128,6 +131,9 @@ call vundle#end()		" Required
 " Formatting {
 
     set nowrap                      " Do not wrap long lines
+    set textwidth=79
+    set formatoptions=qrn1
+    set colorcolumn=85
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
     set expandtab                   " Tabs are spaces, not tabs
@@ -156,130 +162,46 @@ call vundle#end()		" Required
 " Key Remapping {
     let mapleader = ','             " Leader is now ,
 
+    " Use semicolon to execute vim commands
+    nnoremap ; :
+
+    " Open a new split and switch over to it
+    nnoremap <leader>w <C-w>v<C-w>l
+
     " Moving around tabs and windows
-    map <C-J> <C-W>j<C-J>_
-    map <C-K> <C-W>k<C-K>_
-    map <C-L> <C-W>l<C-L>_
-    map <C-H> <C-W>h<C-H>_
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-l> <C-w>l
+    nnoremap <C-h> <C-w>h
 
-    " Wrapped lines goes down/up to next row, rather than next line in file.
-    noremap j gj
-    noremap k gk
+    " Handle easier switching and moving
+    nnoremap / /\v
+    vnoremap / /\v
 
-    " End/Start of line motion keys act relative to row/wrap width in the
-    " presence of `:set wrap`, and relative to line for `:set nowrap`.
-    " Default vim behaviour is to act relative to text line in both cases
-    " Same for 0, home, end, etc
-    function! WrapRelativeMotion(key, ...)
-        let vis_sel=""
-        if a:0
-            let vis_sel="gv"
-        endif
-        if &wrap
-            execute "normal!" vis_sel . "g" . a:key
-        else
-            execute "normal!" vis_sel . a:key
-        endif
-    endfunction
-    " Map g* keys in Normal, Operator-pending, and Visual+select
-    noremap $ :call WrapRelativeMotion("$")<CR>
-    noremap <End> :call WrapRelativeMotion("$")<CR>
-    noremap 0 :call WrapRelativeMotion("0")<CR>
-    noremap <Home> :call WrapRelativeMotion("0")<CR>
-    noremap ^ :call WrapRelativeMotion("^")<CR>
-    " Overwrite the operator pending $/<End> mappings from above
-    " to force inclusive motion with :execute normal!
-    onoremap $ v:call WrapRelativeMotion("$")<CR>
-    onoremap <End> v:call WrapRelativeMotion("$")<CR>
-    " Overwrite the Visual+select mode mappings from above
-    " to ensure the correct vis_sel flag is passed to function
-    vnoremap $ :<C-U>call WrapRelativeMotion("$", 1)<CR>
-    vnoremap <End> :<C-U>call WrapRelativeMotion("$", 1)<CR>
-    vnoremap 0 :<C-U>call WrapRelativeMotion("0", 1)<CR>
-    vnoremap <Home> :<C-U>call WrapRelativeMotion("0", 1)<CR>
-    vnoremap ^ :<C-U>call WrapRelativeMotion("^", 1)<CR>
-
-    " The following two lines conflict with moving to top and
-    " bottom of the screen
-    map <S-H> gT
-    map <S-L> gt
-    
-    " Stupid shift key fixes
-    command! -bang -nargs=* -complete=file E e<bang> <args>
-    command! -bang -nargs=* -complete=file W w<bang> <args>
-    command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-    command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-    command! -bang Wa wa<bang>
-    command! -bang WA wa<bang>
-    command! -bang Q q<bang>
-    command! -bang QA qa<bang>
-    command! -bang Qa qa<bang>
-
-    cmap Tabe tabe
-
+    " Clear a search
+    nnoremap <leader><space> :noh<cr>
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
 
-    " Code folding options
-    nmap <leader>f0 :set foldlevel=0<CR>
-    nmap <leader>f1 :set foldlevel=1<CR>
-    nmap <leader>f2 :set foldlevel=2<CR>
-    nmap <leader>f3 :set foldlevel=3<CR>
-    nmap <leader>f4 :set foldlevel=4<CR>
-    nmap <leader>f5 :set foldlevel=5<CR>
-    nmap <leader>f6 :set foldlevel=6<CR>
-    nmap <leader>f7 :set foldlevel=7<CR>
-    nmap <leader>f8 :set foldlevel=8<CR>
-    nmap <leader>f9 :set foldlevel=9<CR>
-
-    " Most prefer to toggle search highlighting rather than clear the current
-    " search results. To clear search highlighting rather than toggle it on
-    nmap <silent> <leader>/ :nohlsearch<CR>
-
-    " Find merge conflict markers
-    map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
-
-    " Shortcuts
-    " Change Working Directory to that of the current file
-    cmap cwd lcd %:p:h
-    cmap cd. lcd %:p:h
+    " Move around brackets
+    nnoremap <tab> %
+    vnoremap <tab> %
 
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
 
-    " Allow using the repeat operator with a visual selection (!)
-    " http://stackoverflow.com/a/8064607/127816
-    vnoremap . :normal .<CR>
-
-    " For when you forget to sudo.. Really Write the file.
-    cmap w!! w !sudo tee % >/dev/null
-
-    " Some helpers to edit mode
-    " http://vimcasts.org/e/14
-    cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
-    map <leader>ew :e %%
-    map <leader>es :sp %%
-    map <leader>ev :vsp %%
-    map <leader>et :tabe %%
-
-    " Adjust viewports to the same size
-    map <Leader>= <C-w>=
-
-    " Map <Leader>ff to display all lines with keyword under cursor
-    " and ask which one to jump to
-    nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-
-    " Easier horizontal scrolling
-    map zl zL
-    map zh zH
-
-    " Easier formatting
-    nnoremap <silent> <leader>q gwip
-
-    " FIXME: Revert this f70be548
-    " fullscreen mode for GVIM and Terminal, need 'wmctrl' in you PATH
-    map <silent> <F11> :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+    " Disable arrow keys to help learn navigation
+    nnoremap <up> <nop>
+    nnoremap <down> <nop>
+    nnoremap <left> <nop>
+    nnoremap <right> <nop>
+    inoremap <up> <nop>
+    inoremap <down> <nop>
+    inoremap <left> <nop>
+    inoremap <right> <nop>
+    nnoremap j gj
+    nnoremap k gk
 " }
 " --------------------------------------------------------------------------------------------
 
