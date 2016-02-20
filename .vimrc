@@ -17,7 +17,6 @@ if !filereadable(vundle_readme)
     let iCanHazVundle=0
 endif
 
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -41,7 +40,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
 " ==================================================================================================
 
-call vundle#end()		" Required
+call vundle#end()                           " Required
 
 " ==================================================================================================
 " Begin VIMRC Settings
@@ -50,14 +49,14 @@ call vundle#end()		" Required
 " General {
     set encoding=utf-8
     filetype plugin indent on               " Autodetect filetypes
-    "set clipboard=unnamed                   " Use the system clipboard in conjunction with yank et al.
-    "set virtualedit=onemore                 " Cursor beyond last character
-    "set history=1000
-    "set spell                               " Turn on spell check
-    "set hidden                              " Buffer switching without saving
-    "set iskeyword-=.
-    "set iskeyword-=#
-    "set iskeyword-=-
+    set clipboard=unnamed                   " Use the system clipboard in conjunction with yank et al.
+    set virtualedit=onemore                 " Cursor beyond last character
+    set history=1000
+    set spell                               " Turn on spell check
+    set hidden                              " Buffer switching without saving
+    set iskeyword-=.
+    set iskeyword-=#
+    set iskeyword-=-
 
     " Restore cursor to file position previous editing session
     function! ResCur()
@@ -120,7 +119,6 @@ call vundle#end()		" Required
     set gdefault                            " Replace globally
     set wildmenu                            " Show list instead of just completing
     set wildmode=list:longest,full          " Command <Tab> completion, list matches, then longest common part, then all.
-    set whichwrap=b,s,h,l,<,>,[,]           " Backspace and cursor keys wrap too
     set scrolljump=5                        " Lines to scroll when cursor leaves screen
     set scrolloff=3                         " Minimum lines to keep above and below cursor
     set list
@@ -190,6 +188,10 @@ call vundle#end()		" Required
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
+
+    " Navigating home and end of the line
+    map <C-H> <HOME>
+    map <C-L> <END>
 
     " Disable arrow keys to help learn navigation
     nnoremap <up> <nop>
