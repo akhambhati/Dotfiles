@@ -1,12 +1,12 @@
 # Research environments
-export rsHOTH=$HOME/Remotes/hoth_research
-export rsLITT=$HOME/Remotes/litt_research
+export REMOTES=$HOME/Remotes
+export rmtHOTH=$REMOTES/hoth_research
+export rmtLITT=$REMOTES/litt_research
 
 # Development
 export DEVEL=$HOME/Developer
 export CONDA=$DEVEL/miniconda2
-
-# Binaries
+export devHOTH=$DEVEL/hoth_research
 
 # Updated path
 export PATH=$CONDA/bin:$PATH

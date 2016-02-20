@@ -89,7 +89,6 @@ brew cask install --appdir="~/Applications" iterm2
 brew cask install --appdir="~/Applications" java
 brew cask install --appdir="~/Applications" xquartz
 brew cask install --appdir="~/Applications" seil
-brew cask install --appdir="~/Applications" karabiner
 
 # Development tool casks
 brew cask install --appdir="/Applications" macdown
