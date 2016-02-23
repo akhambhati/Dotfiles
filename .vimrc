@@ -167,10 +167,10 @@ call vundle#end()                           " Required
     nnoremap <leader>w <C-w>v<C-w>l
 
     " Moving around tabs and windows
-    nnoremap <C-j> <C-w>j
-    nnoremap <C-k> <C-w>k
-    nnoremap <C-l> <C-w>l
-    nnoremap <C-h> <C-w>h
+    nnoremap <leader>h <C-w>h
+    nnoremap <leader>j <C-w>j
+    nnoremap <leader>k <C-w>k
+    nnoremap <leader>l <C-w>l
 
     " Handle easier switching and moving
     nnoremap / /\v
@@ -190,8 +190,13 @@ call vundle#end()                           " Required
     vnoremap > >gv
 
     " Navigating home and end of the line
-    map <C-H> <HOME>
-    map <C-L> <END>
+    map <C-j> <PageDown>
+    map <C-k> <PageUp>
+    map <C-h> <HOME>
+    map <C-l> <END>
+
+    " Navigate the buffers
+    map <C-o> :buffers<CR>:buffer<SPACE>
 
     " Disable arrow keys to help learn navigation
     nnoremap <up> <nop>
