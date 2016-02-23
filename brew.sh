@@ -67,6 +67,7 @@ brew install pkg-config libffi
 brew install pandoc
 brew install tmux
 brew install htop
+brew install openmpi
 
 # Install more recent versions of some OS X tools.
 brew install homebrew/dupes/grep
