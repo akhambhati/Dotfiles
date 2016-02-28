@@ -77,6 +77,8 @@ call vundle#end()                           " Required
     set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 
     au FocusLost * :wa
+    set backupdir=/Users/akhambhati/.vimbackup
+    set directory=/Users/akhambhati/.vimswap
 " }
 " --------------------------------------------------------------------------------------------
 
