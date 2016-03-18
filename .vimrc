@@ -79,6 +79,7 @@ call vundle#end()                           " Required
     au FocusLost * :wa
     set backupdir=/Users/akhambhati/.vimbackup
     set directory=/Users/akhambhati/.vimswap
+    set noundofile
 " }
 " --------------------------------------------------------------------------------------------
 
