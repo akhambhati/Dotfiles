@@ -4,3 +4,5 @@
     email = akhambhati@gmail.com
 [github]
     user = akhambhati
+[core]
+	excludesfile = .gitignore
