@@ -10,3 +10,7 @@ export devHOTH=$DEVEL/hoth_research
 
 # Updated path
 export PATH=$CONDA/bin:$PATH
+
+# Freesurfer
+export FREESURFER_HOME=/Applications/freesurfer
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
