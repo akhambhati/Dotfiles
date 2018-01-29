@@ -52,10 +52,16 @@ function brewCantina() {
 
     # Update Homebrew recipes
     brew update
+    
+    # Upgrade any already-installed formulae
+    brew upgrade --all    
 
     # Install all our dependencies with bundle (See Brewfile)
     brew tap homebrew/bundle
     brew bundle
+    
+    # Remove outdated versions from cellar
+    brew cleanup
 }
 
 ### ZSH
