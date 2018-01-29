@@ -27,11 +27,15 @@ function initialUpdate() {
 
     # Install all available updates
     fancy_echo "Updating OSX.  If this requires a restart, run the script again."
-    sudo softwareupdate -iva
+    sudo softwareupdate --verbose -ia
     
     # Install XCode    
     fancy_echo "Installing Xcode Command Line Tools."
     xcode-select --install
+    
+    # Install all available updates
+    fancy_echo "Updating OSX.  If this requires a restart, run the script again."
+    sudo softwareupdate --verbose -ia    
 }
 
 ### Homebrew Section
