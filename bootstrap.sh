@@ -1,19 +1,4 @@
-#!/bin/sh
-
-### Pretty(er) printing
-fancy_echo() {
-  local fmt="$1"; shift
-
-  # shellcheck disable=SC2059
-  printf "\n$fmt\n" "$@"
-}
-
-fancy_input() {
-  local fmt="$1"; shift
-
-  # shellcheck disable=SC2059
-  printf "\n$fmt " "$@"
-}
+#!/usr/bin/env bash
 
 ### Initial MacOS Prep
 function initialUpdate() {
