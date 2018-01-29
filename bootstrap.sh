@@ -34,15 +34,6 @@ function initialUpdate() {
     xcode-select --install
 }
 
-### Setup Canonical Directory Structure
-function assembleHoth() {
-    mkdir -p ~/Hoth/Repos/Docs
-    mkdir -p ~/Hoth/Repos/Pkgs
-    mkdir -p ~/Hoth/Repos/Rsrch
-    mkdir -p ~/Hoth/Sandbox
-    mkdir -p ~/Hoth/Remotes
-}
-
 ### Homebrew Section
 function brewCantina() {
     # Check for Homebrew and install if we don't have it
@@ -62,6 +53,15 @@ function brewCantina() {
     
     # Remove outdated versions from cellar
     brew cleanup
+}
+
+### Setup Canonical Directory Structure
+function assembleHoth() {
+    mkdir -p ~/Hoth/Repos/Docs
+    mkdir -p ~/Hoth/Repos/Pkgs
+    mkdir -p ~/Hoth/Repos/Rsrch
+    mkdir -p ~/Hoth/Sandbox
+    mkdir -p ~/Hoth/Remotes
 }
 
 ### ZSH
