@@ -1,4 +1,32 @@
-#!/usr/bin/env zsh
+#!/bin/sh
+
+echo "Setting up Hoth Research Systems..."
+
+### Setup Canonical Directory Structure
+function assembleHoth() {
+    mkdir -p ~/Hoth/Repos/Docs
+    mkdir -p ~/Hoth/Repos/Pkgs
+    mkdir -p ~/Hoth/Repos/Rsrch
+    mkdir -p ~/Hoth/Sandbox
+    mkdir -p ~/Hoth/Remotes
+}
+
+### Homebrew Section
+function brewCantina() {
+    # Check for Homebrew and install if we don't have it
+    if test ! $(which brew); then
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+
+    # Update Homebrew recipes
+    brew update
+
+    # Install all our dependencies with bundle (See Brewfile)
+    brew tap homebrew/bundle
+    brew bundle
+}
+
+### 
 
 git pull origin master;
 
