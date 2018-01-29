@@ -58,5 +58,17 @@ cask 'vlc'
 cask 'font-fira-code'
 cask 'font-fira-mono-for-powerline'
 
+# QuickLook Plugins
+cask 'qlcolorcode'
+cask 'qlstephen'
+cask 'qlmarkdown'
+cask 'quicklook-json'
+cask 'qlprettypatch'
+cask 'quicklook-csv'
+cask 'betterzipql'
+cask 'qlimagesize'
+cask 'webpquicklook'
+cask 'suspicious-package'
+
 # Install Mac App Store apps
 mas 'Unsplash Wallpapers', id: 1284863847
