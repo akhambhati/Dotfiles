@@ -26,7 +26,9 @@ function brewCantina() {
     brew bundle
 }
 
-### 
+### ZSH
+# Make ZSH the default shell environment
+chsh -s $(which zsh)
 
 git pull origin master;
 
