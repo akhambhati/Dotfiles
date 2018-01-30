@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-
 echo "Setting up Hoth Research Systems..."
+sh $HOME/Dotfiles/helper.sh
 
 ### Initial MacOS Prep
 function initialUpdate() {
@@ -70,6 +70,8 @@ function makeSymlinks() {
         'git/gitconfig'
         'git/gitignore'
 
+        'macos/macos'
+        
         'shell/aliases'
         'shell/bindings'
         'shell/env'
@@ -184,4 +186,4 @@ function assembleHoth() {
 }
 assembleHoth
 
-source .macos=
+#source $HOME/.macos
