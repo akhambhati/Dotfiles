@@ -5,16 +5,16 @@ echo "Setting up Hoth Research Systems..."
 
 ### Initial MacOS Prep
 function initialUpdate() {
-    fancy_echo "Initial pre-setup updates..."
+    # Check that we're on MacOS
+    if [[ "($uname)" != 'Darwin']]; then
+        break
+    fi
     
-    # Ask for the administrator password upfront
-    sudo -v
-
-    # Keep-alive: update existing `sudo` time stamp until `osxprep.sh` has finished
-    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+    echo "Initial pre-setup updates..."
+    ask_for_sudo    
 
     # Install all available updates
-    fancy_echo "Updating OSX.  If this requires a restart, run the script again."
+    echo "Updating OSX.  If this requires a restart, run the script again."
     sudo softwareupdate --verbose -ia
     
     # Install XCode    
@@ -43,8 +43,8 @@ function overwriteDotfiles() {
     SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
     DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
 
-    dir=~/Dotfiles                        # dotfiles directory
-    dir_backup=~/Dotfiles_old             # old dotfiles backup directory
+    dir=$HOME/Dotfiles                        # dotfiles directory
+    dir_backup=$HOME/Dotfiles_old             # old dotfiles backup directory
 
     # Get current dir (so run this script from anywhere)
     export DOTFILES_DIR
@@ -126,10 +126,8 @@ function installZSH() {
             chsh -s $(which zsh)
         fi
     else
-        # If zsh isn't installed, get the platform of the current machine
-        platform=$(uname);
         # If the platform is Linux, try an apt-get to install zsh and then recurse
-        if [[ $platform == 'Linux' ]]; then
+        if [[ "$(uname)" == 'Linux' ]]; then
             if [[ -f /etc/redhat-release ]]; then
                 sudo yum install zsh
                 install_zsh
@@ -139,7 +137,7 @@ function installZSH() {
                 install_zsh
             fi
         # If the platform is OS X, tell the user to install zsh :)
-        elif [[ $platform == 'Darwin' ]]; then
+        elif [[ "$(uname)" == 'Darwin' ]]; then
             echo "We'll install zsh, then you need to rerun this script!"
             brew install zsh
             exit
@@ -151,6 +149,11 @@ installZSH
 
 ### Homebrew Section
 function brewCantina() {
+    # Check that we're on MacOS
+    if [[ "$(uname)" != 'Darwin']]; then
+        break
+    fi
+    
     # Check for Homebrew and install if we don't have it
     if test ! $(which brew); then
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -169,49 +172,16 @@ function brewCantina() {
     # Remove outdated versions from cellar
     brew cleanup
 }
+brewCantina
 
 ### Setup Canonical Directory Structure
 function assembleHoth() {
-    mkdir -p ~/Hoth/Repos/Docs
-    mkdir -p ~/Hoth/Repos/Pkgs
-    mkdir -p ~/Hoth/Repos/Rsrch
-    mkdir -p ~/Hoth/Sandbox
-    mkdir -p ~/Hoth/Remotes
+    mkdir -p $HOME/Hoth/Repos/Docs
+    mkdir -p $HOME/Hoth/Repos/Pkgs
+    mkdir -p $HOME/Hoth/Repos/Rsrch
+    mkdir -p $HOME/Hoth/Sandbox
+    mkdir -p $HOME/Hoth/Remotes
 }
-
-### ZSH
-# Make ZSH the default shell environment
-chsh -s $(which zsh)
-
-git pull origin master;
-
-function doIt() {
-    mkdir ~/Developer
-    mkdir ~/Remotes
-
-    ln -s ~/Dotfiles/.gitconfig ~/.gitconfig
-    ln -s ~/Dotfiles/.jupyter ~/.jupyter
-    ln -s ~/Dotfiles/.tmux.conf ~/.tmux.conf
-    ln -s ~/Dotfiles/.tmuxinator ~/.tmuxinator
-    ln -s ~/Dotfiles/.vimrc ~/.vimrc
-    ln -s ~/Dotfiles/.zshrc ~/.zshrc
-    ln -s ~/Dotfiles/Library/Fonts/* ~/Library/Fonts
-    
-    . ~/.zshrc
-}
-
-if [ “$1”==“—force” -o “$1”==“-f” ]; then
-    doIt;
-else
-    echo -n “This may overwrite existing files in your home directory. Are you sure?“
-    read REPLY
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        doIt;
-    fi;
-fi;
-unset doIt;
-
-
-
+assembleHoth
 
 source .macos=
