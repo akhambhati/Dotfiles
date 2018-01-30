@@ -22,6 +22,67 @@ function initialUpdate() {
     fancy_echo "Updating OSX.  If this requires a restart, run the script again."
     sudo softwareupdate --verbose -ia    
 }
+initial_update
+
+### Warn existing Dotfiles will be overwritten
+function overwriteDotfiles() {
+    while true; do
+        read -p "Warning: this will overwrite your current dotfiles. Continue? [y/n] " yn
+        case $yn in
+            [Yy]* ) break;;
+            [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+        esac
+    done
+        
+    # Get the dotfiles directory's absolute path
+    SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
+    DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
+
+    dir=~/Dotfiles                        # dotfiles directory
+    dir_backup=~/Dotfiles_old             # old dotfiles backup directory
+
+    # Get current dir (so run this script from anywhere)
+    export DOTFILES_DIR
+    DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+    
+    # Create dotfiles_old in homedir
+    echo -n "Creating $dir_backup for backup of any existing dotfiles in ~..."
+    mkdir -p $dir_backup
+    echo "done"
+    
+    # Change to the dotfiles directory
+    echo -n "Changing to the $dir directory..."
+    cd $dir
+    echo "done"        
+}
+overwriteDotfiles
+
+### Symlinking
+declare -a FILES_TO_SYMLINK=(
+
+  'shell/shell_aliases'
+  'shell/shell_config'
+  'shell/shell_exports'
+  'shell/shell_functions'
+  'shell/bash_profile'
+  'shell/bash_prompt'
+  'shell/bashrc'
+  'shell/zshrc'
+  'shell/ackrc'
+  'shell/curlrc'
+  'shell/gemrc'
+  'shell/inputrc'
+  'shell/screenrc'
+
+  'git/gitattributes'
+  'git/gitconfig'
+  'git/gitignore'
+  
+  
+
+)
+
 
 ### Homebrew Section
 function brewCantina() {
@@ -90,3 +151,4 @@ fancy_echo "Setting up Hoth Research Systems..."
 git clone https://github.com/akhambhati/Dotfiles.git $HOME/Dotfiles
 
 source .macos
+curl -L git.io/antigen > antigen.zsh
