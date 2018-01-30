@@ -234,7 +234,7 @@ function setupVim() {
     mkdir -p $VIMDIR/swap
     
     # Install Vundle Package Manager
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    git clone https://github.com/VundleVim/Vundle.vim.git $VIMDIR/bundle/Vundle.vim
 }
 
 #source $HOME/.macos
