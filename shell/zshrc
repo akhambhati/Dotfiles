@@ -3,7 +3,7 @@ export DOTFILES=$HOME/Dotfiles
 export ZSH=$DOTFILES/zsh
 
 # Load Antigen
-. $DOTFILES/zsh/antigen/antigen.zsh
+. $HOME/bin/antigen.zsh
 
 # Load the oh-my-zsh’s library
 antigen use oh-my-zsh
@@ -51,7 +51,8 @@ chpwd_functions=( auto-ls $chpwd_functions )
 
 
 # Setup environmental variables
-source $ZSH/alias.zsh
-source $ZSH/env.zsh
-source $ZSH/shortcut.zsh
-source $ZSH/bkeys.zsh
+source $HOME/.aliases
+source $HOME/.bindings
+source $HOME/.env
+source $HOME/.exports
+source $HOME/.history
