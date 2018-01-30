@@ -10,7 +10,7 @@ export DEV=$HOME/Dev
 
 echo "\n\nSetting up Hoth Research Systems..."
 chmod ugo+rx $HOME/Dotfiles/helper.sh
-sh $HOME/Dotfiles/helper.sh
+. $HOME/Dotfiles/helper.sh
 
 
 ### Initial MacOS Prep
