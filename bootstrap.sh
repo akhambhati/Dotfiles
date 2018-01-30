@@ -153,7 +153,7 @@ function installZSH() {
                 install_zsh
             fi
         # If the platform is OS X, tell the user to install zsh :)
-        elif [[ "$(uname)" == 'Darwin' ]]; then
+        elif [ "$(uname)" == 'Darwin' ]; then
             echo "We'll install zsh, then you need to rerun this script!"
             brew install zsh
             exit
@@ -166,7 +166,7 @@ installZSH
 ### Homebrew Section
 function brewCantina() {
     # Check that we're on MacOS
-    if [[ "$(uname)" != 'Darwin']]; then
+    if [ "$(uname)" != 'Darwin' ]; then
         break
     fi
     
@@ -196,9 +196,9 @@ function installAnaconda() {
     CONDA=$DEV/miniconda2
     
     # Install the miniconda environment
-    if [ "$(uname)" == 'Darwin']; then
+    if [ "$(uname)" == 'Darwin' ]; then
         curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh
-    elif [ "$(uname)" == 'Linux']; then
+    elif [ "$(uname)" == 'Linux' ]; then
         curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
     else
         break
