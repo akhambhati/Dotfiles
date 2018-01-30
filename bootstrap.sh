@@ -12,7 +12,7 @@ export DEV=$HOME/Dev
 ### Initial MacOS Prep
 function initialUpdate() {
     # Check that we're on MacOS
-    if [[ "($uname)" != 'Darwin']]; then
+    if [ "$(uname)" != 'Darwin']; then
         break
     fi
     
