@@ -3,6 +3,12 @@
 echo "Setting up Hoth Research Systems..."
 sh $HOME/Dotfiles/helper.sh
 
+# Set Variables
+export DOTFILES=$HOME/Dotfiles
+export DOTFILES_OLD=$HOME/Dotfiles_Old
+export HOTH=$HOME/Hoth
+export DEV=$HOME/Dev
+
 ### Initial MacOS Prep
 function initialUpdate() {
     # Check that we're on MacOS
@@ -38,26 +44,15 @@ function overwriteDotfiles() {
         * ) echo "Please answer yes or no.";;
         esac
     done
-        
-    # Get the dotfiles directory's absolute path
-    SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd -P)"
-    DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
-
-    dir=$HOME/Dotfiles                        # dotfiles directory
-    dir_backup=$HOME/Dotfiles_old             # old dotfiles backup directory
-
-    # Get current dir (so run this script from anywhere)
-    export DOTFILES_DIR
-    DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-    
+            
     # Create dotfiles_old in homedir
-    echo -n "Creating $dir_backup for backup of any existing dotfiles in ~..."
-    mkdir -p $dir_backup
+    echo -n "Creating $DOTFILES_OLD for backup of any existing dotfiles in $HOME..."
+    mkdir -p $DOTFILES_OLD
     echo "done"
     
     # Change to the dotfiles directory
-    echo -n "Changing to the $dir directory..."
-    cd $dir
+    echo -n "Changing to the $DOTFILES directory..."
+    cd $DOTFILES
     echo "done"        
 }
 overwriteDotfiles
@@ -84,8 +79,8 @@ function makeSymlinks() {
     
     # Move any existing dotfiles in homedir to dotfiles_old directory
     for i in ${FILES_TO_SYMLINK[@]}; do
-        echo "Moving any existing dotfiles from ~ to $dir_backup"
-        mv ~/.${i##*/} ~/dotfiles_old/
+        echo "Moving any existing dotfiles from $HOME to $DOTFILES_OLD"
+        mv ~/.${i##*/} $DOTFILES_OLD
     done
     
     # Create symlinks from the above list to home directory
@@ -178,12 +173,37 @@ brewCantina
 
 ### Setup Canonical Directory Structure
 function assembleHoth() {
-    mkdir -p $HOME/Hoth/Repos/Docs
-    mkdir -p $HOME/Hoth/Repos/Pkgs
-    mkdir -p $HOME/Hoth/Repos/Rsrch
-    mkdir -p $HOME/Hoth/Sandbox
-    mkdir -p $HOME/Hoth/Remotes
+    mkdir -p $HOTH/Repos/Docs
+    mkdir -p $HOTH/Repos/Pkgs
+    mkdir -p $HOTH/Repos/Rsrch
+    mkdir -p $HOTH/Remotes
+    
+    mkdir -p $DEV/Repos
+    mkdir -p $DEV/Compiles
 }
 assembleHoth
+
+### Anaconda
+function installAnaconda() {
+    CONDA=$DEV/miniconda2
+    
+    # Install the miniconda environment
+    if [[ "$(uname)" == 'Darwin']]; then
+        curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh
+    elif [[ "$(uname)" == 'Linux']]; then
+        curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+    else
+        break
+    fi    
+    chmod ugo+x $DEV/Compiles/conda_install.sh
+    $DEV/Compiles/conda_install.sh -p $CONDA
+
+    # Create the cb environment
+    conda env create -f $DOTFILES/conda/environment.yml
+
+    # Remove the miniconda installer
+    rm -r DEV/Compiles/conda_install.sh
+}
+installAnaconda
 
 #source $HOME/.macos
