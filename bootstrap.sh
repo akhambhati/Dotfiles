@@ -225,4 +225,11 @@ function setupTerm2() {
 }
 setupTerm2
 
+
+### Setup VIM
+function setupVim() {
+    # Install Vundle Package Manager
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+}
+
 #source $HOME/.macos
