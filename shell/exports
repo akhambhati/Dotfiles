@@ -1,14 +1,14 @@
 ### Define workflow-related environment variables
 
+# Base environment
+export DOTFILES=$HOME/Dotfiles
+
 # Research environments
-export REMOTES=$HOME/Remotes
-export rmtHOTH=$REMOTES/hoth_research
-export rmtLITT=$REMOTES/litt_research
+export HOTH=$HOME/Hoth
 
 # Development
-export DEVEL=$HOME/Developer
-export CONDA=$DEVEL/miniconda2
-export devHOTH=$DEVEL/hoth_research
+export DEV=$HOME/Dev
+export CONDA=$DEV/miniconda2
 
 # Updated path
 export PATH=$CONDA/bin:$PATH
