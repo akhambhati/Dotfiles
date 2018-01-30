@@ -6,6 +6,7 @@ export DOTFILES=$HOME/Dotfiles
 export DOTFILES_OLD=$HOME/Dotfiles_Old
 export HOTH=$HOME/Hoth
 export DEV=$HOME/Dev
+export VIMDIR=$HOME/.vim
 
 
 echo "\n\nSetting up Hoth Research Systems..."
@@ -228,6 +229,10 @@ setupTerm2
 
 ### Setup VIM
 function setupVim() {
+    mkdir -p $VIMDIR/undo
+    mkdir -p $VIMDIR/backup
+    mkdir -p $VIMDIR/swap
+    
     # Install Vundle Package Manager
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 }
