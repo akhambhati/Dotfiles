@@ -26,7 +26,6 @@ brew 'homebrew/dupes/grep'
 # Install Binaries
 brew 'git'
 brew 'htop'
-brew 'mackup'
 brew 'mas'
 brew 'node'
 brew 'tmux'
