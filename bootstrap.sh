@@ -196,9 +196,9 @@ function installAnaconda() {
     CONDA=$DEV/miniconda2
     
     # Install the miniconda environment
-    if [[ "$(uname)" == 'Darwin']]; then
+    if [ "$(uname)" == 'Darwin']; then
         curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh
-    elif [[ "$(uname)" == 'Linux']]; then
+    elif [ "$(uname)" == 'Linux']; then
         curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
     else
         break
