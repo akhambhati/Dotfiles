@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
-echo "Setting up Hoth Research Systems..."
-sh $HOME/Dotfiles/helper.sh
 
 # Set Variables
 export DOTFILES=$HOME/Dotfiles
 export DOTFILES_OLD=$HOME/Dotfiles_Old
 export HOTH=$HOME/Hoth
 export DEV=$HOME/Dev
+
+
+echo "\n\nSetting up Hoth Research Systems..."
+chmod ugo+rx $HOME/Dotfiles/helper.sh
+sh $HOME/Dotfiles/helper.sh
+
 
 ### Initial MacOS Prep
 function initialUpdate() {
@@ -78,9 +82,9 @@ function makeSymlinks() {
     )
     
     # Move any existing dotfiles in homedir to dotfiles_old directory
+    echo "\nMoving any existing dotfiles from $HOME to $DOTFILES_OLD"
     for i in ${FILES_TO_SYMLINK[@]}; do
-        echo "Moving any existing dotfiles from $HOME to $DOTFILES_OLD"
-        mv ~/.${i##*/} $DOTFILES_OLD
+        mv $HOME/.${i##*/} $DOTFILES_OLD
     done
     
     # Create symlinks from the above list to home directory
