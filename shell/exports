@@ -1,3 +1,5 @@
+### Define workflow-related environment variables
+
 # Research environments
 export REMOTES=$HOME/Remotes
 export rmtHOTH=$REMOTES/hoth_research
