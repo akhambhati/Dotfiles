@@ -215,4 +215,14 @@ function installZSH() {
 installZSH
 
 
+### Setup Term2
+function setupTerm2() {
+    # Install the Honukai theme for iTerm
+    open "${DOTFILES}/iterm/themes/honukai.itermcolors"
+
+    # Don’t display the annoying prompt when quitting iTerm
+    defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+}
+setupTerm2
+
 #source $HOME/.macos
