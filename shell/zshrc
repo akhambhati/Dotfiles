@@ -16,7 +16,6 @@ antigen bundle compleat        # Bash completion
 antigen bundle git             # Adds git aliases
 antigen bundle git-extras      # Tab after various git commands autofills fields
 antigen bundle git-flow        # Enforces the git-flow model
-antigen bundle osx             # Interfaces with the OS X ui environment
 antigen bundle pip             # PIP completion
 antigen bundle tmux            # Can set various tux options
 antigen bundle web-search      # Can do shell-based web searches
