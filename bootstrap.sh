@@ -35,11 +35,11 @@ function initialUpdate() {
     fancy_echo "Updating OSX.  If this requires a restart, run the script again."
     sudo softwareupdate --verbose -ia    
 }
-initial_update
+initialUpdate
 
 
 ### Setup Canonical Directory Structure
-function assembleHoth() {
+function setupHoth() {
     mkdir -p $HOME/bin
     
     mkdir -p $HOTH/Repos/Docs
@@ -50,7 +50,7 @@ function assembleHoth() {
     mkdir -p $DEV/Repos
     mkdir -p $DEV/Compiles
 }
-assembleHoth
+setupHoth
 
 
 ### Warn existing Dotfiles will be overwritten
@@ -78,7 +78,7 @@ overwriteDotfiles
 
 
 ### Symlinking
-function makeSymlinks() {
+function setupSymlinks() {
 
     declare -a FILES_TO_SYMLINK=(
         'git/gitconfig'
@@ -126,11 +126,11 @@ function makeSymlinks() {
     done   
     unset FILES_TO_SYMLINK
 }
-makeSymlinks
+setupSymlinks
 
 
 ### Anaconda
-function installAnaconda() {
+function setupAnaconda() {
     CONDA=$DEV/miniconda2
     
     # Install the miniconda environment
@@ -150,11 +150,11 @@ function installAnaconda() {
     # Remove the miniconda installer
     rm -r DEV/Compiles/conda_install.sh
 }
-installAnaconda
+setupAnaconda
 
 
 ### Homebrew Section
-function brewCantina() {
+function setupCantina() {
     # Check that we're on MacOS
     if [ "$(uname)" != 'Darwin' ]; then
         break
@@ -178,11 +178,11 @@ function brewCantina() {
     # Remove outdated versions from cellar
     brew cleanup
 }
-brewCantina
+setupCantina
 
 
 ### Setup ZSH
-function installZSH() {
+function setupZSH() {
     # Test to see if zshell is installed.  If it is:
     if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
         # Install Antigen if it isn't already present
@@ -212,7 +212,7 @@ function installZSH() {
         fi
     fi
 }
-installZSH
+setupZSH
 
 
 ### Setup Term2
