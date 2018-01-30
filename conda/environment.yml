@@ -16,3 +16,7 @@ dependencies:
 - ipykernel
 - flake8
 - pip
+- pip:
+  - yapf
+  - isort
+  - jedi
