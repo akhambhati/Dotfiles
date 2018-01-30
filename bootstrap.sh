@@ -38,6 +38,21 @@ function initialUpdate() {
 initial_update
 
 
+### Setup Canonical Directory Structure
+function assembleHoth() {
+    mkdir -p $HOME/bin
+    
+    mkdir -p $HOTH/Repos/Docs
+    mkdir -p $HOTH/Repos/Pkgs
+    mkdir -p $HOTH/Repos/Rsrch
+    mkdir -p $HOTH/Remotes
+    
+    mkdir -p $DEV/Repos
+    mkdir -p $DEV/Compiles
+}
+assembleHoth
+
+
 ### Warn existing Dotfiles will be overwritten
 function overwriteDotfiles() {
     while true; do
@@ -175,17 +190,6 @@ function brewCantina() {
 }
 brewCantina
 
-### Setup Canonical Directory Structure
-function assembleHoth() {
-    mkdir -p $HOTH/Repos/Docs
-    mkdir -p $HOTH/Repos/Pkgs
-    mkdir -p $HOTH/Repos/Rsrch
-    mkdir -p $HOTH/Remotes
-    
-    mkdir -p $DEV/Repos
-    mkdir -p $DEV/Compiles
-}
-assembleHoth
 
 ### Anaconda
 function installAnaconda() {
