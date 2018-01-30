@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+
+echo "Setting up Hoth Research Systems..."
+
 ### Initial MacOS Prep
 function initialUpdate() {
     fancy_echo "Initial pre-setup updates..."
@@ -23,6 +26,7 @@ function initialUpdate() {
     sudo softwareupdate --verbose -ia    
 }
 initial_update
+
 
 ### Warn existing Dotfiles will be overwritten
 function overwriteDotfiles() {
@@ -58,30 +62,91 @@ function overwriteDotfiles() {
 }
 overwriteDotfiles
 
+
 ### Symlinking
-declare -a FILES_TO_SYMLINK=(
+function makeSymlinks() {
 
-  'shell/shell_aliases'
-  'shell/shell_config'
-  'shell/shell_exports'
-  'shell/shell_functions'
-  'shell/bash_profile'
-  'shell/bash_prompt'
-  'shell/bashrc'
-  'shell/zshrc'
-  'shell/ackrc'
-  'shell/curlrc'
-  'shell/gemrc'
-  'shell/inputrc'
-  'shell/screenrc'
+    declare -a FILES_TO_SYMLINK=(
+        'git/gitconfig'
+        'git/gitignore'
 
-  'git/gitattributes'
-  'git/gitconfig'
-  'git/gitignore'
-  
-  
+        'shell/aliases'
+        'shell/bindings'
+        'shell/env'
+        'shell/exports'
+        'shell/history'
+        'shell/zshrc'
 
-)
+        'vim/vimrc'
+    )
+    
+    # Move any existing dotfiles in homedir to dotfiles_old directory
+    for i in ${FILES_TO_SYMLINK[@]}; do
+        echo "Moving any existing dotfiles from ~ to $dir_backup"
+        mv ~/.${i##*/} ~/dotfiles_old/
+    done
+    
+    # Create symlinks from the above list to home directory
+    local i=''
+    local sourceFile=''
+    local targetFile=''
+    for i in ${FILES_TO_SYMLINK[@]}; do
+        sourceFile="$(pwd)/$i"
+        targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
+        
+        if [ ! -e "$targetFile" ]; then
+            execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+        elif [ "$(readlink "$targetFile")" == "$sourceFile" ]; then
+            print_success "$targetFile → $sourceFile"
+        else
+            ask_for_confirmation "'$targetFile' already exists, do you want to overwrite it?"
+            if answer_is_yes; then
+                rm -rf "$targetFile"
+                execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
+            else
+                print_error "$targetFile → $sourceFile"
+            fi
+        fi
+    done   
+    unset FILES_TO_SYMLINK
+}
+makeSymlinks
+
+
+### Setup ZSH
+function installZSH() {
+    # Test to see if zshell is installed.  If it is:
+    if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
+        # Install Antigen if it isn't already present
+        if [[ ! -e $HOME/bin/antigen.zsh ]]; then
+            curl -L git.io/antigen > $HOME/bin/antigen.zsh
+        fi
+        # Set the default shell to zsh if it isn't currently set to zsh
+        if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
+            chsh -s $(which zsh)
+        fi
+    else
+        # If zsh isn't installed, get the platform of the current machine
+        platform=$(uname);
+        # If the platform is Linux, try an apt-get to install zsh and then recurse
+        if [[ $platform == 'Linux' ]]; then
+            if [[ -f /etc/redhat-release ]]; then
+                sudo yum install zsh
+                install_zsh
+            fi
+            if [[ -f /etc/debian_version ]]; then
+                sudo apt-get install zsh
+                install_zsh
+            fi
+        # If the platform is OS X, tell the user to install zsh :)
+        elif [[ $platform == 'Darwin' ]]; then
+            echo "We'll install zsh, then you need to rerun this script!"
+            brew install zsh
+            exit
+        fi
+    fi
+}
+installZSH
 
 
 ### Homebrew Section
@@ -146,9 +211,7 @@ else
 fi;
 unset doIt;
 
-fancy_echo "Setting up Hoth Research Systems..."
 
-git clone https://github.com/akhambhati/Dotfiles.git $HOME/Dotfiles
 
-source .macos
-curl -L git.io/antigen > antigen.zsh
+
+source .macos=
