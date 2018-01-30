@@ -1,6 +1,0 @@
-[submodule "antigen"]
-	path = zsh/antigen
-	url = https://github.com/zsh-users/antigen.git
-[submodule "zsh-autosuggestions"]
-	path = zsh/zsh-autosuggestions
-	url = https://github.com/tarruda/zsh-autosuggestions.git
