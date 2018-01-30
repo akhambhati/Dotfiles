@@ -129,6 +129,58 @@ function makeSymlinks() {
 makeSymlinks
 
 
+### Anaconda
+function installAnaconda() {
+    CONDA=$DEV/miniconda2
+    
+    # Install the miniconda environment
+    if [ "$(uname)" == 'Darwin' ]; then
+        curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh
+    elif [ "$(uname)" == 'Linux' ]; then
+        curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+    else
+        break
+    fi    
+    chmod ugo+x $DEV/Compiles/conda_install.sh
+    $DEV/Compiles/conda_install.sh -p $CONDA
+
+    # Create the cb environment
+    conda env create -f $DOTFILES/conda/environment.yml
+
+    # Remove the miniconda installer
+    rm -r DEV/Compiles/conda_install.sh
+}
+installAnaconda
+
+
+### Homebrew Section
+function brewCantina() {
+    # Check that we're on MacOS
+    if [ "$(uname)" != 'Darwin' ]; then
+        break
+    fi
+    
+    # Check for Homebrew and install if we don't have it
+    if test ! $(which brew); then
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+
+    # Update Homebrew recipes
+    brew update
+    
+    # Upgrade any already-installed formulae
+    brew upgrade --all    
+
+    # Install all our dependencies with bundle (See Brewfile)
+    brew tap homebrew/bundle
+    brew bundle
+    
+    # Remove outdated versions from cellar
+    brew cleanup
+}
+brewCantina
+
+
 ### Setup ZSH
 function installZSH() {
     # Test to see if zshell is installed.  If it is:
@@ -162,56 +214,5 @@ function installZSH() {
 }
 installZSH
 
-
-### Homebrew Section
-function brewCantina() {
-    # Check that we're on MacOS
-    if [ "$(uname)" != 'Darwin' ]; then
-        break
-    fi
-    
-    # Check for Homebrew and install if we don't have it
-    if test ! $(which brew); then
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    fi
-
-    # Update Homebrew recipes
-    brew update
-    
-    # Upgrade any already-installed formulae
-    brew upgrade --all    
-
-    # Install all our dependencies with bundle (See Brewfile)
-    brew tap homebrew/bundle
-    brew bundle
-    
-    # Remove outdated versions from cellar
-    brew cleanup
-}
-brewCantina
-
-
-### Anaconda
-function installAnaconda() {
-    CONDA=$DEV/miniconda2
-    
-    # Install the miniconda environment
-    if [ "$(uname)" == 'Darwin' ]; then
-        curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh
-    elif [ "$(uname)" == 'Linux' ]; then
-        curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
-    else
-        break
-    fi    
-    chmod ugo+x $DEV/Compiles/conda_install.sh
-    $DEV/Compiles/conda_install.sh -p $CONDA
-
-    # Create the cb environment
-    conda env create -f $DOTFILES/conda/environment.yml
-
-    # Remove the miniconda installer
-    rm -r DEV/Compiles/conda_install.sh
-}
-installAnaconda
 
 #source $HOME/.macos
