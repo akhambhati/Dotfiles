@@ -1,43 +1,50 @@
+
 " ==================================================================================================
 " Vundle Initialization
 " Avoid modifying this section unless you are very sure of what you are doing
 
-" no vi-compatible
-set nocompatible
-filetype off
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Setting up Vundle - the vim plugin bundler
-let iCanHazVundle=1
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle..."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let iCanHazVundle=0
-endif
+" set the runtime path to include Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" Initialize Package Specification
+call vundle#begin()
 
-" let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
 " ==================================================================================================
-" Add all your plugins here
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
+" Utility
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
-Plugin 'mbbill/undotree'
+Plugin 'sjl/gundo.vim'
+
+" General Programming Support
+Plugin 'w0rp/ale'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+
+" Python Support
+Plugin 'vim-python/python-syntax'
+Plugin 'valloric/youcompleteme'
+Plugin 'tmhedberg/simpylfold'
+
+" Markdown / Latex / Support
+Plugin 'tpope/vim-markdown'
+Plugin 'lervag/vimtex'
+
+" JSON Support 
+Plugin 'elzr/vim-json'
+
+" Git Related
 Plugin 'tpope/vim-fugitive'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+
+" Theme / Interface
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tomasr/molokai'
 " ==================================================================================================
 
 call vundle#end()                           " Required
@@ -77,19 +84,18 @@ call vundle#end()                           " Required
     set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 
     au FocusLost * :wa
-    set backupdir=/Users/akhambhati/.vimbackup
-    set directory=/Users/akhambhati/.vimswap
-    set noundofile
+    set undodir=$HOME/.vim/undo
+    set backupdir=$HOME/.vim/backup
+    set directory=$HOME/.vim/swap
 " }
 " --------------------------------------------------------------------------------------------
 
 
 " VIM UI {
-    " Solarized color scheme
-    syntax enable
-    set background=dark
-    let g:solarized_termcolors = 256
-    colorscheme solarized
+    " Molokai color scheme
+    syntax on
+    let g:rehash256 = 1    
+    colorscheme molokai
 
     set showmode                            " Show current mode
     set tabpagemax=15                       " Maximum number of tabs
@@ -101,7 +107,7 @@ call vundle#end()                           " Required
     set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
     set showcmd
 
-    set laststatus=2
+    set laststatus=2                        " Always show the statusline
     set statusline=%<%f\                    " Filename
     set statusline+=%w%h%m%r                " Options
     set statusline+=%{fugitive#statusline()}    " Git Hotness
@@ -222,25 +228,36 @@ call vundle#end()                           " Required
     " CTRL-P
     nmap <leader>f :CtrlP<CR>
 
-    " Undotree
-    nmap <leader>u :UndotreeToggle<CR>
+    " Gundo
+    nnoremap <F5> :GundoToggle<CR>
+    let g:gundo_width = 60
+    let g:gundo_preview_height = 40
+    let g:gundo_right = 1
 
-    " SimpylFold -- settings
+    " ALE
+    " NERDcommenter
+    " SURROUND
+
+    " Python Syntax
+    let g:python_highlight_all = 1
+
+    " YouCompleteMe
+   
+    " SimpylFold
     let g:SimpylFold_docstring_preview=1
-" }
-" --------------------------------------------------------------------------------------------
+    
+    " Markdown
+    let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
-" Functions {
-    " Strip whitespace {
-    function! StripTrailingWhitespace()
-        " Preparation save last search, and cursor position.
-        let _s=@/
-        let l = line(".")
-        let c = col(".")
-        " do the business:
-        %s/\s\+$//e
-        let @/=_s
-        call cursor(l, c)
-    endfunction
+    " Latex
+    
+    " JSON
+    " Git
+    
+    " Vim-Airline Configuration
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_powerline_fonts = 1 
+    let g:airline_theme='molokai'
+    
 " }
 " --------------------------------------------------------------------------------------------
