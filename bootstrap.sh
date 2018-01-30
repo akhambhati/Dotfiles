@@ -135,9 +135,9 @@ function setupAnaconda() {
     
     # Install the miniconda environment
     if [ "$(uname)" == 'Darwin' ]; then
-        curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-MacOSX-x86_64.sh
+        curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh
     elif [ "$(uname)" == 'Linux' ]; then
-        curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
+        curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
     else
         break
     fi    
