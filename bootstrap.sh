@@ -146,10 +146,10 @@ function setupAnaconda() {
     $DEV/Compiles/conda_install.sh -p $CONDA
 
     # Create the cb environment
-    conda env create -f $DOTFILES/conda/environment.yml
+    $CONDA/bin/conda env create -f $DOTFILES/conda/environment.yml
 
     # Remove the miniconda installer
-    rm -r DEV/Compiles/conda_install.sh
+    rm -r $DEV/Compiles/conda_install.sh
 }
 setupAnaconda
 
