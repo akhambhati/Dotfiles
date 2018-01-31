@@ -8,7 +8,7 @@ export HOTH=$HOME/Hoth
 
 # Development
 export DEV=$HOME/Dev
-export CONDA=$DEV/miniconda2
+export CONDA=$DEV/miniconda3
 
 # Updated path
 export PATH=$CONDA/bin:$PATH
