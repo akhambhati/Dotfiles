@@ -1,6 +1,6 @@
 # Setup main environmental variables
 export DOTFILES=$HOME/Dotfiles
-export ZSH=$DOTFILES/zsh
+export ZSH=$DOTFILES//cfg/zsh
 
 # Load Antigen
 . $HOME/bin/antigen.zsh
@@ -38,7 +38,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle tarruda/zsh-autosuggestions
 
 # Load the theme
-antigen theme $ZSH/theme shadyenigma
+antigen theme akhambhati/Dotfiles cfg/zsh/shadyenigma.zsh-theme
 
 # Tell antigen that you’re done
 antigen apply
