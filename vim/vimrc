@@ -94,7 +94,7 @@ call vundle#end()                           " Required
 " VIM UI {
     " Molokai color scheme
     syntax on
-    let g:rehash256 = 1    
+    "let g:rehash256 = 1    
     colorscheme molokai
 
     set showmode                            " Show current mode
