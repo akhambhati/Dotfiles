@@ -38,16 +38,10 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle tarruda/zsh-autosuggestions
 
 # Load the theme
-antigen bundle oskarkrawczyk/honukai-iterm-zsh
-antigen theme oskarkrawczyk/honukai-iterm-zsh honukai
+antigen theme $ZSH/theme shadyenigma
 
 # Tell antigen that you’re done
 antigen apply
-
-# Automatically list directory contents on `cd`.
-auto-ls () { ls; }
-chpwd_functions=( auto-ls $chpwd_functions )
-
 
 # Setup environmental variables
 source $HOME/.aliases
