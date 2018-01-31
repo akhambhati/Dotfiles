@@ -24,6 +24,7 @@ brew 'bash'
 brew 'homebrew/dupes/grep'
 
 # Install Binaries
+brew 'cmake'
 brew 'git'
 brew 'htop'
 brew 'mas'
@@ -33,7 +34,7 @@ brew 'python3'
 brew 'tmux'
 brew 'trash'
 brew 'tree'
-brew 'vim', args: ['with-python3', 'without-python']
+brew 'macvim', args: ['with-python3', 'without-python']
 brew 'wget'
 
 # Apps
