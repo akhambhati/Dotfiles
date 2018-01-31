@@ -3,7 +3,6 @@
 
 # Set Variables
 export DOTFILES=$HOME/Dotfiles
-export DOTFILES_OLD=$HOME/Dotfiles_Old
 export HOTH=$HOME/Hoth
 export DEV=$HOME/Dev
 export VIMDIR=$HOME/.vim
@@ -54,30 +53,6 @@ function setupHoth() {
 setupHoth
 
 
-### Warn existing Dotfiles will be overwritten
-function overwriteDotfiles() {
-    while true; do
-        read -p "Warning: this will overwrite your current dotfiles. Continue? [y/n] " yn
-        case $yn in
-            [Yy]* ) break;;
-            [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
-        esac
-    done
-            
-    # Create dotfiles_old in homedir
-    echo -n "Creating $DOTFILES_OLD for backup of any existing dotfiles in $HOME..."
-    mkdir -p $DOTFILES_OLD
-    echo "done"
-    
-    # Change to the dotfiles directory
-    echo -n "Changing to the $DOTFILES directory..."
-    cd $DOTFILES
-    echo "done"        
-}
-overwriteDotfiles
-
-
 ### Symlinking
 function setupSymlinks() {
 
@@ -99,19 +74,13 @@ function setupSymlinks() {
         'vim/vimrc'
     )
     
-    # Move any existing dotfiles in homedir to dotfiles_old directory
-    echo "\nMoving any existing dotfiles from $HOME to $DOTFILES_OLD"
-    for i in ${FILES_TO_SYMLINK[@]}; do
-        mv $HOME/.${i##*/} $DOTFILES_OLD
-    done
-    
     # Create symlinks from the above list to home directory
     local i=''
     local sourceFile=''
     local targetFile=''
     for i in ${FILES_TO_SYMLINK[@]}; do
         sourceFile="$(pwd)/$i"
-        targetFile="$HOME/.$(printf "%s" "$i" | sed "s/.*\/\(.*\)/\1/g")"
+        targetFile="$HOME/.$(printf "%s" "$i" | cut -d'/' -f2-)"
         
         if [ ! -e "$targetFile" ]; then
             execute "ln -fs $sourceFile $targetFile" "$targetFile → $sourceFile"
@@ -220,6 +189,11 @@ setupZSH
 
 ### Setup Term2
 function setupTerm2() {
+    # Check that we're on MacOS
+    if [ "$(uname)" != 'Darwin' ]; then
+        break
+    fi
+    
     # Install the Honukai theme for iTerm
     open "${DOTFILES}/iterm/themes/honukai.itermcolors"
 
