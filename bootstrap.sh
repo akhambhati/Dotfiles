@@ -29,11 +29,11 @@ function initialUpdate() {
     sudo softwareupdate --verbose -ia
     
     # Install XCode    
-    fancy_echo "Installing Xcode Command Line Tools."
+    echo "Installing Xcode Command Line Tools."
     xcode-select --install
     
     # Install all available updates
-    fancy_echo "Updating OSX.  If this requires a restart, run the script again."
+    echo "Updating OSX.  If this requires a restart, run the script again."
     sudo softwareupdate --verbose -ia    
 }
 initialUpdate
