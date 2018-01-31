@@ -229,12 +229,16 @@ setupTerm2
 
 ### Setup VIM
 function setupVim() {
+    alias vim=/usr/local/bin/vim
+    
     mkdir -p $VIMDIR/undo
     mkdir -p $VIMDIR/backup
     mkdir -p $VIMDIR/swap
     
     # Install Vundle Package Manager
     git clone https://github.com/VundleVim/Vundle.vim.git $VIMDIR/bundle/Vundle.vim
+    
+    vim +PluginInstall +qall
 }
 
 #source $HOME/.macos
