@@ -27,3 +27,9 @@ npm-debug.log
 
 # IDEs stuff
 .idea
+
+# SSH Credentials
+.id_dsa*
+.id_rsa*
+.id_ecdsa*
+.id_ed25519*
