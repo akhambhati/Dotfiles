@@ -62,6 +62,12 @@ function setupSymlinks() {
     local sourceFile=''
     local targetFile=''
     for i in ${FILES_TO_SYMLINK[@]}; do
+        # Check that the path does not start with 'cfg'
+        if [[ "$(printf "%s" "$i" | cut -d'/' -f-1)" == 'cfg' ]]; then
+            continue
+        fi
+        
+        # Format the source and target files and begin linking
         sourceFile="$(pwd)/$i"
         targetFile="$HOME/.$(printf "%s" "$i" | cut -d'/' -f2-)"
         
