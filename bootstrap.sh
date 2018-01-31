@@ -100,7 +100,7 @@ function setupAnaconda() {
     $DEV/Compiles/conda_install.sh -p $CONDA
 
     # Create the cb environment
-    $CONDA/bin/conda env create -f $DOTFILES/conda/environment.yml
+    $CONDA/bin/conda env create -f $DOTFILES/cfg/conda/environment.yml
 
     # Remove the miniconda installer
     rm -r $DEV/Compiles/conda_install.sh
@@ -178,7 +178,7 @@ function setupTerm2() {
     fi
     
     # Install the Honukai theme for iTerm
-    open "${DOTFILES}/iterm/themes/honukai.itermcolors"
+    open "${DOTFILES}/cfg/iterm/honukai.itermcolors"
 
     # Don’t display the annoying prompt when quitting iTerm
     defaults write com.googlecode.iterm2 PromptOnQuit -bool false
