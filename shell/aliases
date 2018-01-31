@@ -3,6 +3,11 @@
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# Remote_bootstrap
+function remote_bootstrap() {
+  sh -c "`curl -fsSL https://raw.github.com/akhambhati/Dotfiles/master/remote_bootstrap.sh`"
+}
+
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 
