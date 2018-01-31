@@ -16,6 +16,7 @@ alias gh="github"
 alias rm="trash"
 alias x+="chmod +x"
 alias -- +x="chmod +x"
+alias vim="/usr/local/Cellar/macvim/8.0-144_3/MacVim.app/Contents/bin/vim"
 
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."
