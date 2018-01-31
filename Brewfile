@@ -33,7 +33,7 @@ brew 'python3'
 brew 'tmux'
 brew 'trash'
 brew 'tree'
-brew 'vim'
+brew 'vim', args: ['with-python3', 'without-python']
 brew 'wget'
 
 # Apps
