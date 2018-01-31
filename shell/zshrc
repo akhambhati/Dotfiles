@@ -55,3 +55,6 @@ source $HOME/.bindings
 source $HOME/.env
 source $HOME/.exports
 source $HOME/.history
+
+# Autoload the Hoth Conda Environment
+source activate Hoth
