@@ -240,5 +240,6 @@ function setupVim() {
     
     vim +PluginInstall +qall
 }
+setupVim
 
 #source $HOME/.macos
