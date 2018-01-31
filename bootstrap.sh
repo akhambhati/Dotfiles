@@ -87,6 +87,8 @@ function setupSymlinks() {
 
         'macos/macos'
         
+        'ssh/ssh/config'
+        
         'shell/aliases'
         'shell/bindings'
         'shell/env'
@@ -229,7 +231,7 @@ setupTerm2
 
 ### Setup VIM
 function setupVim() {
-    alias vim=/usr/local/bin/vim
+    alias vim=/usr/local/Cellar/macvim/8.0-144_3/MacVim.app/Contents/bin/vim
     
     mkdir -p $VIMDIR/undo
     mkdir -p $VIMDIR/backup
@@ -239,6 +241,11 @@ function setupVim() {
     git clone https://github.com/VundleVim/Vundle.vim.git $VIMDIR/bundle/Vundle.vim
     
     vim +PluginInstall +qall
+    
+    # Manually Install YouCompleteMe -- may need to do an offline install after bootstrap (finicky)
+    cd $VIMDIR/.vim/bundle/YouCompleteMe
+    python3 ./install.py
+    CD $DOTFILES
 }
 setupVim
 
