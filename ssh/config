@@ -1,0 +1,17 @@
+Host holocron
+    HostName 192.168.1.217
+    User akhambhati
+    Port 22
+    IdentityFile ~/.ssh/id_rsa
+
+Host pia
+    HostName pia.cin.ucsf.edu
+    User akhambhati
+    Port 7777
+    IdentityFile ~/.ssh/id_rsa
+
+Host chead
+    HostName chead.uphs.upenn.edu
+    User akhambhati
+    LocalForward 1515 localhost:1515
+    IdentityFile ~/.ssh/id_rsa
