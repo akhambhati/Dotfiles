@@ -132,7 +132,7 @@ setupSymlinks
 
 ### Anaconda
 function setupAnaconda() {
-    CONDA=$DEV/miniconda2
+    CONDA=$DEV/miniconda3
     
     # Install the miniconda environment
     if [ "$(uname)" == 'Darwin' ]; then
