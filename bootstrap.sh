@@ -55,24 +55,7 @@ setupHoth
 
 ### Symlinking
 function setupSymlinks() {
-
-    declare -a FILES_TO_SYMLINK=(
-        'git/gitconfig'
-        'git/gitignore'
-
-        'macos/macos'
-        
-        'ssh/ssh/config'
-        
-        'shell/aliases'
-        'shell/bindings'
-        'shell/env'
-        'shell/exports'
-        'shell/history'
-        'shell/zshrc'
-
-        'vim/vimrc'
-    )
+    declare -a FILES_TO_SYMLINK=($(ls -d */*))
     
     # Create symlinks from the above list to home directory
     local i=''
