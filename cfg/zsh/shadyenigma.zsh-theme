@@ -23,7 +23,7 @@ function check_git_prompt_info() {
             git_sha_info=""
         else
             git_head_info="$(git_prompt_info 2> /dev/null)"
-            git_sha_info="$(git_prompt_short_sha)"
+            git_sha_info='$(git log --pretty=format:"%h \"%s\"" -1 2> /dev/null)'
         fi
 
         git_mid_info="$(git_prompt_status)"
