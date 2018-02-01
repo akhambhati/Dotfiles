@@ -1,13 +1,16 @@
 ### Define workflow-related environment variables
 
+# Create a USERDATA reference
+export USERDATA=/userdata/akhambhati
+
 # Base environment
 export DOTFILES=$HOME/Dotfiles
 
 # Research environments
-export HOTH=$HOME/Hoth
+export HOTH=$USERDATA/Hoth
 
 # Development
-export DEV=$HOME/Dev
+export DEV=$USERDATA/Dev
 export CONDA=$DEV/miniconda3
 
 # Updated path
