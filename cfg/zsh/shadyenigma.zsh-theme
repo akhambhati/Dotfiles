@@ -37,7 +37,7 @@ function get_right_prompt() {
         echo "%{$reset_color%}"
     fi
 }
-local git_sha='$(get_right_prompt)'
+git_sha='$(get_right_prompt)'
 
 PROMPT="%E
 $LAMBDA \
