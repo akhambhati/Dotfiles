@@ -194,7 +194,10 @@ setupTerm2
 
 ### Setup VIM
 function setupVim() {
-    alias vim=/usr/local/Cellar/macvim/8.0-144_3/MacVim.app/Contents/bin/vim
+    # Alias to MacVim if on a MacOS
+    if [ "$(uname)" == 'Darwin' ]; then
+        alias vim="$(brew --prefix macvim)/MacVim.app/Contents/bin/vim"
+    fi
     
     mkdir -p $VIMDIR/undo
     mkdir -p $VIMDIR/backup
