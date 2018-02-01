@@ -17,7 +17,7 @@ function check_git_prompt_info() {
         if [[ -z $(git_prompt_info 2> /dev/null) ]]; then
             echo "%{$fg[blue]%}detached-head%{$reset_color%}) $(git_prompt_status)"
         else
-            echo "$(git_prompt_info 2> /dev/null) $(git_prompt_status)"
+            echo "$(git_prompt_info 2> /dev/null) ($(git_prompt_status))"
         fi
     fi
 }
@@ -25,7 +25,7 @@ local git_info='$(check_git_prompt_info)'
 
 function get_right_prompt() {
     if git rev-parse --git-dir > /dev/null 2>&1; then
-        echo -n "$(git_prompt_long_sha)%{$reset_color%}"
+        echo -n "$(git_prompt_short_sha)%{$reset_color%}"
     else
         echo -n "%{$reset_color%}"
     fi
