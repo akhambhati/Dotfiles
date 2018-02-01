@@ -8,6 +8,11 @@ function remote_bootstrap() {
   sh -c "`curl -fsSL https://raw.github.com/akhambhati/Dotfiles/master/remote_bootstrap.sh`"
 }
 
+# Read markdown files
+markdown_read () {
+  pandoc $1 | lynx -stdin
+}
+
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 
