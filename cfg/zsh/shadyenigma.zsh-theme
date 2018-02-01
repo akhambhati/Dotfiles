@@ -9,6 +9,16 @@ function box_name {
     [ -f ~/.box-name ] && cat ~/.box-name || echo $HOST
 }
 
+function check_git_sha_info() {
+    if git rev-parse --git-dir > /dev/null 2>&1; then
+        git_sha_info="$(git_prompt_short_sha)"
+    else
+        git_sha_info=""
+    fi
+    echo "${git_sha_info}%{$reset_color%}"
+}
+local git_sha='$(check_git_sha_info)'
+
 # Git sometimes goes into a detached head state. git_prompt_info doesn't
 # return anything in this case. So wrap it in another function and check
 # for an empty string.
@@ -29,16 +39,6 @@ function check_git_prompt_info() {
     fi
 }
 local git_info='$(check_git_prompt_info)'
-
-function check_git_sha_info() {
-    if git rev-parse --git-dir > /dev/null 2>&1; then
-        git_sha_info="$(git_prompt_short_sha)"
-    else
-        git_sha_info=""
-    fi
-    echo "${git_sha_info}%{$reset_color%}"
-}
-local git_sha='$(check_git_sha_info)'
 
 PROMPT="%E
 $LAMBDA \
