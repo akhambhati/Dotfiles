@@ -1,7 +1,11 @@
 #!/usr/bin/env zsh
 
 # Color the lambda according to context
-local TIMEE="%(?,%{$fg_bold[green]%}[%*],%{$fg_bold[red]%}[%*])"
+local LAMBDA="%(?,
+%{$fg_bold[yellow%}[%*]%{$fg_bold[yellow]%}λ %{$reset_color%},
+%{$fg_bold[red]%}[%*]%{$fg_bold[red%}λ %{$reset_color%})"
+
+# Color username according to root or normal user
 if [[ "$USER" == "root" ]]; then USERCOLOR="red"; else USERCOLOR="cyan"; fi
 
 # Machine name.
@@ -33,14 +37,12 @@ function check_git_prompt_info() {
 local git_info='$(check_git_prompt_info)'
 
 PROMPT="
-$TIMEE \
 %{$fg_no_bold[$USERCOLOR]%}%n \
 %{$fg_no_bold[white]%}at \
 %{$fg_no_bold[green]%}$(box_name) \
 %{$fg_no_bold[magenta]%}[%~] \
 ${git_info} \
-
-%{$fg_bold[yellow]%}λ %{$reset_color%}"
+$LAMBDA"
 
 # Format for git_prompt_info()
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} %{$fg[blue]%} "
