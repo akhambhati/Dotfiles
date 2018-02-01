@@ -53,8 +53,8 @@ RPROMPT='$(get_right_prompt)'
 # Format for git_prompt_info()
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} %{$fg[blue]%} "
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="$(git_prompt_short_sha)%{$reset_color%}%{$fg_bold[red]%} ✖︎"
-ZSH_THEME_GIT_PROMPT_CLEAN="$(git_prompt_short_sha)%{$reset_color%}%{$fg_bold[green]%} ●"
+ZSH_THEME_GIT_PROMPT_DIRTY="${git_prompt_short_sha}%{$reset_color%}%{$fg_bold[red]%} ✖︎"
+ZSH_THEME_GIT_PROMPT_CLEAN="${git_prompt_short_sha}%{$reset_color%}%{$fg_bold[green]%} ●"
 
 # Format for git_prompt_status()
 ZSH_THEME_GIT_PROMPT_ADDED="%{$fg_bold[green]%}+"
