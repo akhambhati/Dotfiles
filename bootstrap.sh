@@ -2,9 +2,10 @@
 
 
 # Set Variables
+export USERDATA=/userdata/akhambhati
 export DOTFILES=$HOME/Dotfiles
-export HOTH=$HOME/Hoth
-export DEV=$HOME/Dev
+export HOTH=$USERDATA/Hoth
+export DEV=$USERDATA/Dev
 export VIMDIR=$HOME/.vim
 
 
