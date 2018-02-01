@@ -39,8 +39,7 @@ $TIMEE \
 %{$fg_no_bold[green]%}$(box_name) \
 %{$fg_no_bold[magenta]%}[%~] \
 ${git_info} \
-%{$fg[white]%}[%*]
-%{$fg_bold[yellow]%}λ, %{$reset_color%}"
+%{$fg_bold[yellow]%}λ %{$reset_color%}"
 
 # Format for git_prompt_info()
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} %{$fg[blue]%} "
