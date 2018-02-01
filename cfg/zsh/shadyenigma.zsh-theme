@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Color the lambda according to context
-local TIMEE="%(?,%{$fg_bold[green]%}%*,%{$fg_bold[red]%}%*)"
+local TIMEE="%(?,%{$fg_bold[green]%}[%*],%{$fg_bold[red]%}[%*])"
 if [[ "$USER" == "root" ]]; then USERCOLOR="red"; else USERCOLOR="cyan"; fi
 
 # Machine name.
