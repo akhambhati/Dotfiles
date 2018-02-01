@@ -67,7 +67,7 @@ function zle-line-init zle-keymap-select {
 ${git_info} \
 
 $LAMBDA %{$reset_color%}"
-    RPS1="%{$fg_no_bold[red]%}<<$(basename ${CONDA_PREFIX})>>%{$reset_color%}"
+    RPS1="%{$fg_no_bold[red]%}<< $(basename ${CONDA_PREFIX}) >>%{$reset_color%}"
     zle reset-prompt
 }
 
