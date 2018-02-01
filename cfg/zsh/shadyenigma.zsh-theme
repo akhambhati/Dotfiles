@@ -24,9 +24,9 @@ function check_git_prompt_info() {
 
         git_mid_info="$(git_prompt_status)"
         if [[ ${#git_mid_info} == 0 ]]; then
-            echo "${git_head_info}${git_mid_info} ${git_sha_info}"
+            echo "${git_head_info} ${git_mid_info} ${git_sha_info}"
         else
-            echo "${git_head_info}%{$fg[white]%}(%{$reset_color%}${git_mid_info}%{$fg[white]%})%{$reset_color%} ${git_sha_info}"
+            echo "${git_head_info} %{$fg[white]%}(%{$reset_color%}${git_mid_info}%{$fg[white]%})%{$reset_color%} ${git_sha_info}"
         fi
     fi
 }
@@ -61,5 +61,5 @@ ZSH_THEME_GIT_PROMPT_AHEAD=" %{$fg_bold[white]%}^"
 
 
 # Format for git_prompt_long_sha() and git_prompt_short_sha()
-ZSH_THEME_GIT_PROMPT_SHA_BEFORE=" %{$fg_bold[white]%}[%{$fg_bold[blue]%}"
+ZSH_THEME_GIT_PROMPT_SHA_BEFORE="%{$fg_bold[white]%}[%{$fg_bold[blue]%}"
 ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$fg_bold[white]%}]"
