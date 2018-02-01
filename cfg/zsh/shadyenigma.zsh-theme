@@ -61,9 +61,9 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[cyan]%}?"
 
 function zle-line-init zle-keymap-select {
     case ${KEYMAP} in
-        (vicmd)      LAMBDA=LAMBDA_CMD ;;
-        (main|viins) LAMBDA=LAMBDA_INS ;;
-        (*)          LAMBDA=LAMBDA_INS ;;
+        (vicmd)      LAMBDA="${LAMBDA_CMD}" ;;
+        (main|viins) LAMBDA="${LAMBDA_INS}" ;;
+        (*)          LAMBDA=}${LAMBDA_INS}" ;;
     esac
 
     PROMPT="
@@ -78,5 +78,18 @@ function zle-line-init zle-keymap-select {
     zle reset-prompt
 }
 
+function zle-line-finish {
+    PROMPT="
+    %{$fg_no_bold[$USERCOLOR]%}%n \
+    %{$fg_no_bold[white]%}at \
+    %{$fg_no_bold[green]%}$(box_name) \
+    %{$fg_no_bold[magenta]%}[%~] \
+    ${git_info} \
+
+    $LAMBDA_INS %{$reset_color%}"
+}
+
+
 zle -N zle-line-init
 zle -N zle-keymap-select
+zle -N zle-line-finish
