@@ -32,7 +32,8 @@ function check_git_prompt_info() {
 }
 local git_info='$(check_git_prompt_info)'
 
-PROMPT="%E
+PROMPT="
+
 $TIMEE \
 %{$fg_no_bold[$USERCOLOR]%}%n \
 %{$fg_no_bold[white]%}at \
@@ -61,4 +62,4 @@ ZSH_THEME_GIT_PROMPT_AHEAD=" %{$fg_bold[white]%}^"
 
 # Format for git_prompt_long_sha() and git_prompt_short_sha()
 ZSH_THEME_GIT_PROMPT_SHA_BEFORE="%{$fg_bold[blue]%}["
-ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$fg_bold[white]%}]"
+ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$fg_bold[blue]%}]"
