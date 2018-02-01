@@ -30,14 +30,15 @@ function check_git_prompt_info() {
 }
 local git_info='$(check_git_prompt_info)'
 
-function get_right_prompt() {
+function check_git_sha_info() {
     if git rev-parse --git-dir > /dev/null 2>&1; then
-        echo "${git_prompt_short_sha}%{$reset_color%}"
+        git_sha_info="$(git_prompt_short_sha)"
     else
-        echo "%{$reset_color%}"
+        git_sha_info=""
     fi
+    echo "${git_sha_info}%{$reset_color%}"
 }
-git_sha="$(git_prompt_short_sha)"
+local git_sha='$(check_git_sha_info)'
 
 PROMPT="%E
 $LAMBDA \
@@ -48,8 +49,6 @@ $LAMBDA \
 ${git_info} \
 %{$fg[white]%}[%*]
 %{$fg_bold[yellow]%}→ %{$reset_color%}"
-
-#RPROMPT='$(get_right_prompt)'
 
 # Format for git_prompt_info()
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} %{$fg[blue]%} "
