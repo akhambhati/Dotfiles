@@ -56,7 +56,7 @@ function zle-line-init zle-keymap-select {
     case ${KEYMAP} in
         (vicmd)      LAMBDA="${LAMBDA_CMD}" ;;
         (main|viins) LAMBDA="${LAMBDA_INS}" ;;
-        (*)          LAMBDA=}${LAMBDA_INS}" ;;
+        (*)          LAMBDA="${LAMBDA_INS}" ;;
     esac
 
     PROMPT="
