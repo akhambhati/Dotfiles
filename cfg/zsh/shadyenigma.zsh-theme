@@ -17,7 +17,7 @@ function check_git_prompt_info() {
         if [[ -z $(git_prompt_info 2> /dev/null) ]]; then
             echo "%{$fg[blue]%}detached-head%{$reset_color%}) $(git_prompt_status)"
         else
-            echo "$(git_prompt_info 2> /dev/null) ($(git_prompt_status))"
+            echo "$(git_prompt_info 2> /dev/null) $(git_prompt_status)"
         fi
     fi
 }
@@ -45,9 +45,9 @@ RPROMPT='$(get_right_prompt)'
 
 # Format for git_prompt_info()
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} %{$fg[blue]%} "
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[green]%} ✖︎"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%} ●"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg[white]%})%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[white]%}(%{$fg_bold[green]%} ✖︎"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[white]%}(%{$fg_bold[green]%} ●"
 
 # Format for git_prompt_status()
 ZSH_THEME_GIT_PROMPT_ADDED="%{$fg_bold[green]%}+"
