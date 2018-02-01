@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Color the lambda according to context
-local LAMBDA="%(?,%{$fg_bold[yellow%}[%*]%{$fg_bold[yellow]%}λ %{$reset_color%},%{$fg_bold[red]%}[%*]%{$fg_bold[red%}λ %{$reset_color%})"
+local LAMBDA="%(?,%{$fg_bold[yellow%}[%*]--[λ %{$reset_color%},%{$fg_bold[red]%}[%*]--[λ %{$reset_color%})"
 
 # Color username according to root or normal user
 if [[ "$USER" == "root" ]]; then USERCOLOR="red"; else USERCOLOR="cyan"; fi
