@@ -29,7 +29,6 @@ function check_git_prompt_info() {
     fi
 }
 local git_info='$(check_git_prompt_info)'
-local git_sha='$(git_prompt_short_sha)'
 
 function get_right_prompt() {
     if git rev-parse --git-dir > /dev/null 2>&1; then
@@ -38,6 +37,7 @@ function get_right_prompt() {
         echo -n "%{$reset_color%}"
     fi
 }
+local git_sha='$(get_right_prompt)'
 
 PROMPT="%E
 $LAMBDA \
