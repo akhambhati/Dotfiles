@@ -28,7 +28,7 @@ function check_git_prompt_info() {
 
         git_mid_info="$(git_prompt_status)"
         if [[ ${#git_mid_info} == 0 ]]; then
-            echo "${git_head_info} ${git_sha_info}"
+            echo "${git_head_info} %{$fg_bold[blue]%}[${git_sha_info}]%{$reset_color%}"
         else
             echo "${git_head_info} %{$fg[white]%}(%{$reset_color%}${git_mid_info}%{$fg[white]%})%{$reset_color%} %{$fg_bold[blue]%}[${git_sha_info}]%{$reset_color%}"
         fi
