@@ -33,13 +33,13 @@ function check_git_prompt_info() {
 local git_info='$(check_git_prompt_info)'
 
 PROMPT="
-
 $TIMEE \
 %{$fg_no_bold[$USERCOLOR]%}%n \
 %{$fg_no_bold[white]%}at \
 %{$fg_no_bold[green]%}$(box_name) \
 %{$fg_no_bold[magenta]%}[%~] \
 ${git_info} \
+
 %{$fg_bold[yellow]%}λ %{$reset_color%}"
 
 # Format for git_prompt_info()
