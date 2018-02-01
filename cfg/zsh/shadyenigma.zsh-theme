@@ -52,6 +52,19 @@ ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg_bold[magenta]%}>"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[yellow]%}#"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[cyan]%}?"
 
+
+function precmd() {
+    PROMPT="
+%{$fg_no_bold[$USERCOLOR]%}%n \
+%{$fg_no_bold[white]%}at \
+%{$fg_no_bold[green]%}$(box_name) \
+%{$fg_no_bold[magenta]%}[%~] \
+${git_info} \
+
+$LAMBDA %{$reset_color%}"
+    RPS1="%{$fg_no_bold[red]%}<< $(basename ${CONDA_PREFIX}) >>%{$reset_color%}"
+}
+
 function zle-line-init zle-keymap-select {
     case ${KEYMAP} in
         (vicmd)      LAMBDA="${LAMBDA_CMD}" ;;
