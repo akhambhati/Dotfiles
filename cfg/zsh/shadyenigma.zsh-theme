@@ -32,7 +32,7 @@ local git_info='$(check_git_prompt_info)'
 
 function get_right_prompt() {
     if git rev-parse --git-dir > /dev/null 2>&1; then
-        echo "$(git_prompt_short_sha)%{$reset_color%}"
+        echo "${git_prompt_short_sha}%{$reset_color%}"
     else
         echo "%{$reset_color%}"
     fi
