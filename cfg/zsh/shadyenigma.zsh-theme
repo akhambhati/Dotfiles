@@ -15,9 +15,9 @@ function box_name {
 function check_git_prompt_info() {
     if git rev-parse --git-dir > /dev/null 2>&1; then
         if [[ -z $(git_prompt_info 2> /dev/null) ]]; then
-            git_head_info='%{$fg[blue]%}detached-head%{$reset_color%})'
+            git_head_info="%{$fg[blue]%}detached-head%{$reset_color%})"
         else
-            git_head_info='$(git_prompt_info 2> /dev/null)'
+            git_head_info="$(git_prompt_info 2> /dev/null)"
         fi
         git_mid_info='$(git_prompt_status)'
         echo "${git_head_info} ${git_mid_info}"
