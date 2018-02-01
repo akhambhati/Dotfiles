@@ -24,9 +24,9 @@ function check_git_prompt_info() {
 
         git_mid_info="$(git_prompt_status)"
         if [[ ${#git_mid_info} == 0 ]]; then
-            echo "${git_head_info} ${git_mid_info} ${git_sha_info}"
+            echo "${git_head_info}${git_mid_info} ${git_sha_info}"
         else
-            echo "${git_head_info} %{$fg[white]%}(%{$reset_color%}${git_mid_info}%{$fg[white]%})%{$reset_color%} ${git_sha_info}"
+            echo "${git_head_info}%{$fg[white]%}(%{$reset_color%}${git_mid_info}%{$fg[white]%})%{$reset_color%} ${git_sha_info}"
         fi
     fi
 }
@@ -45,8 +45,8 @@ ${git_info} \
 # Format for git_prompt_info()
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} %{$fg[blue]%} "
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" ${git_sha}%{$reset_color%}%{$fg_bold[red]%} ✖︎"
-ZSH_THEME_GIT_PROMPT_CLEAN=" ${git_sha}%{$reset_color%}%{$fg_bold[green]%} ●"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$reset_color%}%{$fg_bold[red]%} ✖︎"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$reset_color%}%{$fg_bold[green]%} ●"
 
 # Format for git_prompt_status()
 ZSH_THEME_GIT_PROMPT_ADDED="%{$fg_bold[green]%}+"
