@@ -11,7 +11,8 @@ zle -N zle-keymap-select
 
 # Color the lambda according to context
 #local LAMBDA="%(?,%{$fg_bold[yellow]%}%*]--[λ,%{$fg_bold[red]%}%*]--[λ)"
-local LAMBDA="%{$fg_bold[red]%}λ ::"
+local LAMBDA_CMD="%{$fg_bold[red]%}λ ::"
+local LAMBDA_INS="%{$fg_bold[yellow]%}λ ::"
 
 # Color username according to root or normal user
 if [[ "$USER" == "root" ]]; then USERCOLOR="red"; else USERCOLOR="cyan"; fi
@@ -44,15 +45,6 @@ function check_git_prompt_info() {
 }
 local git_info='$(check_git_prompt_info)'
 
-PROMPT="
-%{$fg_no_bold[$USERCOLOR]%}%n \
-%{$fg_no_bold[white]%}at \
-%{$fg_no_bold[green]%}$(box_name) \
-%{$fg_no_bold[magenta]%}[%~] \
-${git_info} \
-
-$LAMBDA  ${VIMODE} %{$reset_color%}"
-
 # Format for git_prompt_info()
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} %{$fg[blue]%} "
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -66,3 +58,25 @@ ZSH_THEME_GIT_PROMPT_DELETED="%{$fg_bold[red]%}-"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg_bold[magenta]%}>"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[yellow]%}#"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[cyan]%}?"
+
+function zle-line-init zle-keymap-select {
+    case ${KEYMAP} in
+        (vicmd)      LAMBDA=LAMBDA_CMD ;;
+        (main|viins) LAMBDA=LAMBDA_INS ;;
+        (*)          LAMBDA=LAMBDA_INS ;;
+    esac
+
+    PROMPT="
+    %{$fg_no_bold[$USERCOLOR]%}%n \
+    %{$fg_no_bold[white]%}at \
+    %{$fg_no_bold[green]%}$(box_name) \
+    %{$fg_no_bold[magenta]%}[%~] \
+    ${git_info} \
+
+    $LAMBDA %{$reset_color%}"
+
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
