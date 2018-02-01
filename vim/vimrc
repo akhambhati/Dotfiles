@@ -250,11 +250,14 @@ call vundle#end()                           " Required
     " Set options related to text wrapping
     au BufNewFile,BufReadPost *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
     au BufNewFile,BufReadPost,BufWrite *.{md,mdown,mkd,mkdn,markdown,mdwn} syntax match Comment /\%^---\_.\{-}---$/
-    au FileType markdown setlocal spell        " Spellchecking for Markdown
-    au FileType markdown setlocal linebreak    " Avoid wrap breaking words
-    au FileType markdown setlocal nolist       " Make sure linebreak work as expected
-    au FileType markdown setlocal showbreak=↳\ " Know where we're
-    au FileType markdown setlocal textwidth=0  " Remove text width limit
+    au FileType markdown setlocal wrap             " Turn on line wrapping for Markdown
+    au FileType markdown setlocal spell            " Spellchecking for Markdown
+    au FileType markdown setlocal linebreak        " Avoid wrap breaking words
+    au FileType markdown setlocal nolist           " Make sure linebreak work as expected
+    au FileType markdown setlocal showbreak=↳\     " Know where we're
+    au FileType markdown setlocal textwidth=0      " Remove text width limit
+    au FileType markdown setlocal colorcolumn=0    " Remove the right columnbar
+
      " Syntac highlighting
     let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
     let g:markdown_syntax_conceal = 0
