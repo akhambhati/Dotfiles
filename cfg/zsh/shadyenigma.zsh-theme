@@ -54,13 +54,12 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[cyan]%}?"
 
 precmd () {
     PROMPT="
-    %{$fg_no_bold[$USERCOLOR]%}%n \
-    %{$fg_no_bold[white]%}at \
-    %{$fg_no_bold[green]%}$(box_name) \
-    %{$fg_no_bold[magenta]%}[%~] \
-    ${git_info} \
-
-    $LAMBDA_INS %{$reset_color%}"
+%{$fg_no_bold[$USERCOLOR]%}%n \
+%{$fg_no_bold[white]%}at \
+%{$fg_no_bold[green]%}$(box_name) \
+%{$fg_no_bold[magenta]%}[%~] \
+${git_info} \
+$LAMBDA_INS %{$reset_color%}"
 }
 
 function zle-line-init zle-keymap-select {
@@ -71,26 +70,26 @@ function zle-line-init zle-keymap-select {
     esac
 
     PROMPT="
-    %{$fg_no_bold[$USERCOLOR]%}%n \
-    %{$fg_no_bold[white]%}at \
-    %{$fg_no_bold[green]%}$(box_name) \
-    %{$fg_no_bold[magenta]%}[%~] \
-    ${git_info} \
+%{$fg_no_bold[$USERCOLOR]%}%n \
+%{$fg_no_bold[white]%}at \
+%{$fg_no_bold[green]%}$(box_name) \
+%{$fg_no_bold[magenta]%}[%~] \
+${git_info} \
 
-    $LAMBDA %{$reset_color%}"
+$LAMBDA %{$reset_color%}"
 
     zle reset-prompt
 }
 
 function zle-line-finish {
     PROMPT="
-    %{$fg_no_bold[$USERCOLOR]%}%n \
-    %{$fg_no_bold[white]%}at \
-    %{$fg_no_bold[green]%}$(box_name) \
-    %{$fg_no_bold[magenta]%}[%~] \
-    ${git_info} \
+%{$fg_no_bold[$USERCOLOR]%}%n \
+%{$fg_no_bold[white]%}at \
+%{$fg_no_bold[green]%}$(box_name) \
+%{$fg_no_bold[magenta]%}[%~] \
+${git_info} \
 
-    $LAMBDA_INS %{$reset_color%}"
+$LAMBDA_INS %{$reset_color%}"
 }
 
 
