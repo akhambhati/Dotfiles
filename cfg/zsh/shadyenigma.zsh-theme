@@ -9,16 +9,6 @@ function box_name {
     [ -f ~/.box-name ] && cat ~/.box-name || echo $HOST
 }
 
-function check_git_sha_info() {
-    if git rev-parse --git-dir > /dev/null 2>&1; then
-        git_sha_info="$(git_prompt_short_sha)"
-    else
-        git_sha_info=""
-    fi
-    echo "${git_sha_info}%{$reset_color%}"
-}
-local git_sha='$(check_git_sha_info)'
-
 # Git sometimes goes into a detached head state. git_prompt_info doesn't
 # return anything in this case. So wrap it in another function and check
 # for an empty string.
@@ -26,15 +16,17 @@ function check_git_prompt_info() {
     if git rev-parse --git-dir > /dev/null 2>&1; then
         if [[ -z $(git_prompt_info 2> /dev/null) ]]; then
             git_head_info="%{$fg[blue]%}detached-head%{$reset_color%})"
+            git_sha_info=""
         else
             git_head_info="$(git_prompt_info 2> /dev/null)"
+            git_sha_info="$(git_prompt_short_sha)"
         fi
 
         git_mid_info="$(git_prompt_status)"
         if [[ ${#git_mid_info} == 0 ]]; then
-            echo "${git_head_info} ${git_mid_info}"
+            echo "${git_head_info} ${git_mid_info} ${git_sha_info}"
         else
-            echo "${git_head_info} %{$fg[white]%}(%{$reset_color%}${git_mid_info}%{$fg[white]%})%{$reset_color%}"
+            echo "${git_head_info} %{$fg[white]%}(%{$reset_color%}${git_mid_info}%{$fg[white]%})%{$reset_color%} ${git_sha_info}"
         fi
     fi
 }
