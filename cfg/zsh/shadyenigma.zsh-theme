@@ -58,11 +58,3 @@ ZSH_THEME_GIT_PROMPT_DELETED="%{$fg_bold[red]%}-"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg_bold[magenta]%}>"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg_bold[yellow]%}#"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg_bold[cyan]%}?"
-
-# Format for git_prompt_ahead()
-ZSH_THEME_GIT_PROMPT_AHEAD=" %{$fg_bold[white]%}^"
-
-
-# Format for git_prompt_long_sha() and git_prompt_short_sha()
-ZSH_THEME_GIT_PROMPT_SHA_BEFORE=""
-ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$fg_bold[blue]%}]"
