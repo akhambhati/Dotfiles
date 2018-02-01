@@ -4,7 +4,7 @@
 
 # Color the lambda according to context
 #local LAMBDA="%(?,%{$fg_bold[yellow]%}%*]--[λ,%{$fg_bold[red]%}%*]--[λ)"
-local LAMBDA_CMD="%U%{$fg_bold[red]%}λ ::%u"
+local LAMBDA_CMD="%{$fg_bold[yellow]%}λ ::"
 local LAMBDA_INS="%{$fg_bold[red]%}λ ::"
 
 # Color username according to root or normal user
