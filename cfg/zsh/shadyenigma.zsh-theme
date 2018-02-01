@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Color the lambda according to context
-local LAMBDA="%(?,%{$fg_bold[yellow]%}[%*]-[λ,%{$fg_bold[red]%}[%*]--[λ)"
+local LAMBDA="%(?,%{$fg_bold[yellow]%}%*]--[λ,%{$fg_bold[red]%}%*]--[λ)"
 
 # Color username according to root or normal user
 if [[ "$USER" == "root" ]]; then USERCOLOR="red"; else USERCOLOR="cyan"; fi
@@ -41,7 +41,7 @@ PROMPT="
 %{$fg_no_bold[magenta]%}[%~] \
 ${git_info} \
 
-    $LAMBDA %{$reset_color%}"
+$LAMBDA %{$reset_color%}"
 
 # Format for git_prompt_info()
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[white]%}on%{$reset_color%} %{$fg[blue]%} "
