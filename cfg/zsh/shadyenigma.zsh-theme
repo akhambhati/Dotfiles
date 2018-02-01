@@ -1,13 +1,6 @@
 #!/usr/bin/env zsh
 
 
-function zle-keymap-select {
-    VIMODE="${${KEYMAP/vicmd/ M:command}/(main|viins)/}"
-    zle reset-prompt
-}
-
-zle -N zle-keymap-select
-
 
 # Color the lambda according to context
 #local LAMBDA="%(?,%{$fg_bold[yellow]%}%*]--[λ,%{$fg_bold[red]%}%*]--[λ)"
