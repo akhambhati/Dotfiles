@@ -67,7 +67,7 @@ function zle-line-init zle-keymap-select {
 ${git_info} \
 
 $LAMBDA %{$reset_color%}"
-
+    RPS1="$(basename ${CONDA_PREFIX})"
     zle reset-prompt
 }
 
@@ -80,6 +80,7 @@ function zle-line-finish {
 ${git_info} \
 
 $LAMBDA_INS %{$reset_color%}"
+    RPS1="$(basename ${CONDA_PREFIX})"
 }
 
 
