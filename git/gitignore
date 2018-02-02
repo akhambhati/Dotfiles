@@ -34,3 +34,4 @@ id_rsa*
 id_ecdsa*
 id_ed25519*
 known_hosts
+authorized_keys
