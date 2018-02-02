@@ -145,7 +145,7 @@ setupCantina
 ### Setup ZSH
 function setupZSH() {
     # Test to see if zshell is installed.  If it is:
-    if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
+    if [ -f /bin/zsh -o -f /usr/bin/zsh -o -f $HOME/bin/zsh ]; then
         # Install Antigen if it isn't already present
         if [[ ! -e $HOME/bin/antigen.zsh ]]; then
             curl -L git.io/antigen > $HOME/bin/antigen.zsh

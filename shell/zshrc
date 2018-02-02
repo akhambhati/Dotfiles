@@ -1,6 +1,6 @@
 # Setup main environmental variables
 export DOTFILES=$HOME/Dotfiles
-export ZSH=$DOTFILES//cfg/zsh
+export ZSH=$DOTFILES/cfg/zsh
 
 # Load Antigen
 . $HOME/bin/antigen.zsh
@@ -51,4 +51,4 @@ source $HOME/.exports
 source $HOME/.history
 
 # Autoload the Hoth Conda Environment
-source activate Hoth
+source activate hoth
