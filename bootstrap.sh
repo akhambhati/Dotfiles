@@ -209,14 +209,10 @@ function setupVim() {
     vim +PluginInstall +qall
     
     # Manually Install YouCompleteMe -- may need to do an offline install after bootstrap (finicky)
-<<<<<<< HEAD
-    cd $VIMDIR/bundle/youcompleteme
-    python3 ./install.py
-=======
     cd $VIMDIR/bundle/YouCompleteMe
     $CONDA/bin/python3 ./install.py
->>>>>>> origin/master
-    CD $DOTFILES
+
+    cd $DOTFILES
 }
 setupVim
 
