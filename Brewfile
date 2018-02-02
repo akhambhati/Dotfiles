@@ -40,6 +40,7 @@ brew 'macvim', args: ['with-python3', 'without-python']
 brew 'wget'
 
 # Apps
+cask 'adobe-acrobat-reader'
 cask 'aerial'
 cask 'alfred'
 cask 'docker'
