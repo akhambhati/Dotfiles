@@ -97,7 +97,7 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 # Aliases specific to MacOS
-if [ "$(uname)" == 'Darwin' ]; then
+if [ "$(uname)" = 'Darwin' ]; then
     alias vim="$(brew --prefix macvim)/MacVim.app/Contents/bin/vim"
     alias cask='brew cask' # i <3 u cask
 
