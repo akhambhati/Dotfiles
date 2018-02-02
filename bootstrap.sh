@@ -6,6 +6,7 @@ export DOTFILES=$HOME/Dotfiles
 export HOTH=$HOME/Hoth
 export DEV=$HOME/Dev
 export VIMDIR=$HOME/.vim
+export CONDA=$DEV/miniconda3
 
 
 echo "\n\nSetting up Hoth Research Systems..."
@@ -92,8 +93,6 @@ setupSymlinks
 
 ### Anaconda
 function setupAnaconda() {
-    CONDA=$DEV/miniconda3
-    
     # Install the miniconda environment
     if [ "$(uname)" == 'Darwin' ]; then
         curl -o $DEV/Compiles/conda_install.sh https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
@@ -210,7 +209,7 @@ function setupVim() {
     
     # Manually Install YouCompleteMe -- may need to do an offline install after bootstrap (finicky)
     cd $VIMDIR/bundle/YouCompleteMe
-    python3 ./install.py
+    $CONDA/bin/python3 ./install.py
     CD $DOTFILES
 }
 setupVim
