@@ -1,3 +1,9 @@
+Host geonosis
+    HostName geonosis.ankhambhati.com
+    User akhambhati
+    Port 44
+    IdentityFile ~/.ssh/id_rsa
+
 Host holocron
     HostName holocron.ankhambhati.com
     User akhambhati
