@@ -12,6 +12,7 @@ dependencies:
 - statsmodels
 - h5py
 - jupyter
+- jupyter_contrib_nbextensions
 - ipython
 - ipykernel
 - flake8

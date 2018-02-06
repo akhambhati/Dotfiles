@@ -1,0 +1,31 @@
+{
+  "load_extensions": {
+    "nbextensions_configurator/config_menu/main": true,
+    "contrib_nbextensions_help_item/main": true,
+    "latex_envs/latex_envs": false,
+    "autosavetime/main": true,
+    "codefolding/main": true,
+    "comment-uncomment/main": true,
+    "execute_time/ExecuteTime": true,
+    "hinterland/hinterland": true,
+    "ruler/main": true,
+    "select_keymap/main": true,
+    "table_beautifier/main": true,
+    "exercise/main": false,
+    "gist_it/main": true,
+    "hide_input_all/main": true,
+    "limit_output/main": true,
+    "spellchecker/main": true,
+    "toggle_all_line_numbers/main": true,
+    "help_panel/help_panel": true,
+    "scratchpad/main": true,
+    "code_prettify/autopep8": false,
+    "varInspector/main": true,
+    "toc2/main": true,
+    "collapsible_headings/main": true,
+    "code_prettify/code_prettify": true
+  },
+  "ruler_column": [
+    "80"
+  ]
+}
