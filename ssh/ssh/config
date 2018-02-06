@@ -14,6 +14,7 @@ Host pia
     HostName pia.cin.ucsf.edu
     User akhambhati
     Port 7777
+    ForwardX11 yes
     IdentityFile ~/.ssh/id_rsa
 
 Host chead
