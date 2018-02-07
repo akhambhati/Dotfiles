@@ -18,6 +18,8 @@ dependencies:
 - flake8
 - pip
 - pip:
+  - coverage
+  - future
   - yapf
   - isort
   - jedi
