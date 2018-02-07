@@ -49,6 +49,12 @@ alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | awk '{print \$2}'"
 # Copy my public key to the pasteboard
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | printf '=> Public key copied to pasteboard.\n'"
 
+# Tmux load
+alias txl="tmuxp load $DOTFILES/cfg/tmuxp/*.yml"
+
+# Update Conda with Hoth Environment file
+alias hoth_update="conda env update -f $DOTFILES/cfg/conda/environment.yml"
+
 #
 # GIT STUFF
 #
