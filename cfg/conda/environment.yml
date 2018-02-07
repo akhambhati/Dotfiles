@@ -18,6 +18,7 @@ dependencies:
 - flake8
 - pip
 - pip:
+  - tmuxp
   - yapf
   - isort
   - jedi
