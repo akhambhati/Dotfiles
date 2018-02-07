@@ -81,6 +81,14 @@ call vundle#end()                           " Required
         autocmd BufWinEnter * call ResCur()
     augroup END
 
+    " Initiate a StartUp sequence
+    function! StartUp()
+        if 0 == argc()
+            NERDTree
+        end
+    endfunction
+    autocmd VimEnter * call StartUp()
+
     set backup                  " Backups are nice ...
     set undofile                " So is persistent undo ...
     set undolevels=1000         " Maximum number of changes that can be undone
