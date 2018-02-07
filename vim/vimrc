@@ -271,6 +271,12 @@ call vundle#end()                           " Required
     nmap <leader>bb :enew<cr>
     nmap <leader>bq :bp <BAR> bd #<cr>
 
+    " Vimux
+    " Prompt for a command to run
+    map <Leader>vp :VimuxPromptCommand<CR>
+    " Run last command executed by VimuxRunCommand
+    map <Leader>vl :VimuxRunLastCommand<CR>
+
     " Gundo
     nnoremap <F5> :GundoToggle<CR>
     let g:gundo_width = 60
