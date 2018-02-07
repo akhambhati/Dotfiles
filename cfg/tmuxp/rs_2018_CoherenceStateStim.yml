@@ -1,0 +1,13 @@
+session_name: rs_2018_CoherenceStateStim
+start_directory: $HOTH/Repos/Rsrch/rs-2018-CoherenceStateStim
+shell_command_before: 
+      - 'source activate rs_2018_CoherenceStateStim'
+windows:
+    - window_name: dev
+      focus: True
+      layout: main-vertical
+      options:
+          main-pane-width: 160
+      panes:
+          - vim
+          - jupyter console
