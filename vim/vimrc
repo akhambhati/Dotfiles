@@ -227,6 +227,7 @@ call vundle#end()                           " Required
 " Plugins {
     " NERDTree
     nmap <leader>t :NERDTreeFocus<cr>
+    let g:nerdtree_tabs_open_on_gui_startup=1
 
     " CTRL-P
     " Setup some default ignores
