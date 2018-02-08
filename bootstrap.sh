@@ -118,7 +118,7 @@ setupAnaconda
 function setupCantina() {
     # Check that we're on MacOS
     if [ "$(uname)" != 'Darwin' ]; then
-        break
+        return 0
     fi
     
     # Check for Homebrew and install if we don't have it
@@ -180,7 +180,7 @@ setupZSH
 function setupTerm2() {
     # Check that we're on MacOS
     if [ "$(uname)" != 'Darwin' ]; then
-        break
+        return 0
     fi
     
     # Install the Honukai theme for iTerm
@@ -211,7 +211,8 @@ function setupVim() {
     # Manually Install YouCompleteMe -- may need to do an offline install after bootstrap (finicky)
     cd $VIMDIR/bundle/youcompleteme
     $CONDA/bin/python3 ./install.py
-    CD $DOTFILES
+
+    cd $DOTFILES
 }
 setupVim
 

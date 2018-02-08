@@ -19,6 +19,8 @@ dependencies:
 - pip
 - pip:
   - tmuxp
+  - coverage
+  - future
   - yapf
   - isort
   - jedi
