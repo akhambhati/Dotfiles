@@ -32,7 +32,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-python/python-syntax'
 Plugin 'valloric/youcompleteme'
 Plugin 'tmhedberg/simpylfold'
-Plugin 'google/yapf', { 'rpt': 'plugins/vim' }
 
 " Markdown / Latex / Support
 Plugin 'tpope/vim-markdown'
@@ -294,9 +293,6 @@ call vundle#end()                           " Required
 
     " SimpylFold
     let g:SimpylFold_docstring_preview=1
-
-    " YAPF
-    map <leader>Y :call yapf#YAPF()<cr>
 
     " Markdown
     " Set options related to text wrapping
