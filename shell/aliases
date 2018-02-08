@@ -8,6 +8,9 @@ markdown_read () {
   pandoc $1 | lynx -stdin
 }
 
+# Redirect vim
+alias vim="$HOME/bin/vim"
+
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 
