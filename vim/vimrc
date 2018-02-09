@@ -7,6 +7,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle
+#set rtp+=$HOME/.vim/bundle/YouCompleteMe
 set rtp+=$HOME/.vim/bundle/Vundle.vim
 
 " Initialize Package Specification
@@ -30,7 +31,6 @@ Plugin 'tpope/vim-surround'
 
 " Python Support
 Plugin 'vim-python/python-syntax'
-Plugin 'valloric/youcompleteme'
 Plugin 'tmhedberg/simpylfold'
 
 " Markdown / Latex / Support
@@ -162,13 +162,6 @@ call vundle#end()                           " Required
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
     set comments=sl:/*,mb:*,elx:*/  " auto format comment blocks
 
-    " Remove trailing whitespaces and ^M chars
-    autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl,sql autocmd BufWritePre <buffer> call StripTrailingWhitespace()
-    autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
-    autocmd FileType haskell,puppet,ruby,yml setlocal expandtab shiftwidth=2 softtabstop=2
-
-    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-
     " Workaround vim-commentary for Haskell
     autocmd FileType haskell setlocal commentstring=--\ %s
     " Workaround broken colour highlighting in Haskell
@@ -283,6 +276,15 @@ call vundle#end()                           " Required
     let g:gundo_right = 1
 
     " ALE
+    " Put this in vimrc or a plugin file of your own.
+    " After this is configured, :ALEFix will try and fix your JS code with ESLint.
+    let g:ale_fixers = {
+    \   'python': ['isort', 'yapf'],
+    \}
+    " Set this setting in vimrc if you want to fix files automatically on save.
+    " This is off by default.
+    let g:ale_fix_on_save = 1
+
     " NERDcommenter
     " SURROUND
 
@@ -297,7 +299,6 @@ call vundle#end()                           " Required
     " Markdown
     " Set options related to text wrapping
     au BufNewFile,BufReadPost *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
-    au BufNewFile,BufReadPost,BufWrite *.{md,mdown,mkd,mkdn,markdown,mdwn} syntax match Comment /\%^---\_.\{-}---$/
     au FileType markdown setlocal wrap             " Turn on line wrapping for Markdown
     au FileType markdown setlocal spell            " Spellchecking for Markdown
     au FileType markdown setlocal linebreak        " Avoid wrap breaking words
