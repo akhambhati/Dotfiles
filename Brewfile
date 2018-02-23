@@ -26,6 +26,7 @@ brew 'homebrew/dupes/grep'
 # Install Binaries
 brew 'cmake'
 brew 'git'
+brew 'gfortran'
 brew 'htop'
 brew 'mas'
 brew 'node'
