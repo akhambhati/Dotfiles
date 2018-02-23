@@ -14,7 +14,7 @@
     "exercise/main": false,
     "gist_it/main": true,
     "hide_input_all/main": true,
-    "limit_output/main": true,
+    "limit_output/main": false,
     "spellchecker/main": true,
     "toggle_all_line_numbers/main": true,
     "help_panel/help_panel": true,
