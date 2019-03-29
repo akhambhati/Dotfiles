@@ -56,6 +56,7 @@ cask 'spotify'
 cask 'skype'
 cask 'slack'
 cask 'vlc'
+cask 'xquartz'
 
 # Fonts
 cask 'font-fira-code'
