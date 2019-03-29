@@ -151,7 +151,8 @@ function setupZSH() {
         fi
         # Set the default shell to zsh if it isn't currently set to zsh
         if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-            chsh -s $(which zsh)
+            ask_for_sudo
+            sudo chsh -s $(which zsh) $USER
         fi
     else
         # If the platform is Linux, try an apt-get to install zsh and then recurse
