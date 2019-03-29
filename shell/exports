@@ -10,5 +10,8 @@ export HOTH=$HOME/Hoth
 export DEV=$HOME/Dev
 export CONDA=$DEV/miniconda3
 
+# VIM
+export VIMDIR=$HOME/.vim
+
 # Updated path
 export PATH=$CONDA/bin:$PATH
