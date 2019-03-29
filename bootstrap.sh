@@ -133,7 +133,7 @@ function setupCantina() {
 
     # Install all our dependencies with bundle (See Brewfile)
     brew tap homebrew/bundle
-    brew bundle
+    brew bundle $DOTFILES/Brewfile
     
     # Remove outdated versions from cellar
     brew cleanup
