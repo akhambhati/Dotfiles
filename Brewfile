@@ -34,7 +34,7 @@ brew 'lynx'
 brew 'tmux'
 brew 'trash'
 brew 'tree'
-brew 'macvim', args: ['enable-python3interp']
+brew 'macvim'
 brew 'wget'
 
 # Apps
@@ -46,7 +46,6 @@ cask 'dropbox'
 cask 'evernote'
 cask 'gfortran'
 cask 'google-chrome'
-cask 'gpgtools'
 cask 'iterm2'
 cask 'java'
 cask 'karabiner-elements'
