@@ -34,7 +34,7 @@ brew 'lynx'
 brew 'tmux'
 brew 'trash'
 brew 'tree'
-brew 'macvim', args: ['with-lua', 'enable-python3interp']
+brew 'macvim', args: ['enable-python3interp']
 brew 'wget'
 
 # Apps
