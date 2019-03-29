@@ -102,7 +102,7 @@ function setupAnaconda() {
         break
     fi    
     chmod ugo+x $DEV/Compiles/conda_install.sh
-    $DEV/Compiles/conda_install.sh -p $CONDA
+    $DEV/Compiles/conda_install.sh -p $CONDA -u
 
     # Create the cb environment
     $CONDA/bin/conda env create -f $DOTFILES/cfg/conda/environment.yml
