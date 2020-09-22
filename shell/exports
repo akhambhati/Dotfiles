@@ -13,6 +13,7 @@ export HOTH=$USERDATA/Hoth
 export DEV=$USERDATA/Dev
 export CONDA=$DEV/miniconda3
 export VENV=$DEV/virtualenvs
+export VIRTUAL_ENV="/dev/null"
 
 # Updated path
 export PATH=$CONDA/bin:$PATH
