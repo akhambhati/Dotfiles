@@ -51,4 +51,4 @@ source $HOME/.env
 source $HOME/.history
 
 # Autoload the Hoth Conda Environment
-venv_activate Hoth
+chvenv Hoth
