@@ -36,7 +36,7 @@ alias -- -="cd -"
 
 # mv, rm, cp, gunzip
 alias mv='mv -v'
-alias rm='rm -i -v'
+alias rm='rm -v'
 alias cp='cp -v'
 alias ungz="gunzip -k"
 
@@ -57,6 +57,16 @@ alias txl="tmuxp load $DOTFILES/cfg/tmuxp/*.yml"
 
 # Update Conda with Hoth Environment file
 alias hoth_update="conda env update -f $DOTFILES/cfg/conda/environment.yml"
+function mkvenv() {
+    python3 -m venv "$VENV/$1";
+}
+function rmvenv() {
+    rm -r "$VENV/$1";
+}
+function venv_activate() {
+    source "$VENV/$1/bin/activate"
+}
+alias lsvenv="ls -lht $VENV"
 
 #
 # GIT STUFF
