@@ -63,7 +63,7 @@ function mkvenv() {
 function rmvenv() {
     rm -r "$VENV/$1";
 }
-function venv_activate() {
+function chvenv() {
     source "$VENV/$1/bin/activate"
 }
 alias lsvenv="ls -lht $VENV"
