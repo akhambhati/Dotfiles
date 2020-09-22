@@ -44,11 +44,11 @@ antigen theme akhambhati/Dotfiles cfg/zsh/shadyenigma.zsh-theme
 antigen apply
 
 # Setup environmental variables
+source $HOME/.exports
 source $HOME/.aliases
 source $HOME/.bindings
 source $HOME/.env
-source $HOME/.exports
 source $HOME/.history
 
 # Autoload the Hoth Conda Environment
-source activate hoth
+venv_activate Hoth
