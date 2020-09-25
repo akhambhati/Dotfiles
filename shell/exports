@@ -10,6 +10,8 @@ export HOTH=$HOME/Hoth
 export DEV=$HOME/Dev
 export CONDA=$DEV/miniconda3
 export PATH=$CONDA/bin:$PATH
+export VENV=$DEV/virtualenvs
+export VIRTUAL_ENV="/dev/null"
 
 # VIM
 export VIMDIR=$HOME/.vim
