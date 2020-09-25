@@ -62,7 +62,7 @@ function precmd() {
 ${git_info} \
 
 $LAMBDA %{$reset_color%}"
-    RPS1="%{$fg_no_bold[red]%}<< $(basename ${CONDA_PREFIX}) >>%{$reset_color%}"
+    RPS1="%{$fg_no_bold[red]%}<< $(basename ${VIRTUAL_ENV}) >>%{$reset_color%}"
 }
 
 function zle-line-init zle-keymap-select {
@@ -80,7 +80,7 @@ function zle-line-init zle-keymap-select {
 ${git_info} \
 
 $LAMBDA %{$reset_color%}"
-    RPS1="%{$fg_no_bold[red]%}<< $(basename ${CONDA_PREFIX}) >>%{$reset_color%}"
+    RPS1="%{$fg_no_bold[red]%}<< $(basename ${VIRTUAL_ENV}) >>%{$reset_color%}"
     zle reset-prompt
 }
 
