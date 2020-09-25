@@ -7,7 +7,7 @@
     "codefolding/main": true,
     "comment-uncomment/main": true,
     "execute_time/ExecuteTime": true,
-    "hinterland/hinterland": true,
+    "hinterland/hinterland": false,
     "ruler/main": true,
     "select_keymap/main": true,
     "table_beautifier/main": true,

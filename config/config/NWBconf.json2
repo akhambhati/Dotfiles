@@ -1,0 +1,11 @@
+{
+  "imaging_directory": "/path/to/imaging",
+  "rig_processed_data_directory": "/path/to/rig/prcsd_data",
+  "rig_tanks_directory": "/path/to/rig/tanks",
+  "scratch_tanks_directory": "/path/to/scratch/temporary_tanks",
+  "scratch_processed_data_directory": "/path/to/scratch/temporary_nwb",
+  "server_tanks_directory": "/path/to/tanks",
+  "server_processed_data_directory": "/path/to/prcsd_data",
+  "older_processed_data_directory": "/path/to/older_subject/data",
+  "trial_notes_directory": "/path/to/trial_notes"
+}

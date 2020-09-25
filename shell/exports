@@ -9,9 +9,21 @@ export HOTH=$HOME/Hoth
 # Development
 export DEV=$HOME/Dev
 export CONDA=$DEV/miniconda3
+export PATH=$CONDA/bin:$PATH
 
 # VIM
 export VIMDIR=$HOME/.vim
 
-# Updated path
-export PATH=$CONDA/bin:$PATH
+# Imaging
+export FSLDIR=/usr/local/fsl
+export PATH=$FSLDIR/bin:$PATH
+
+export AFNIDIR=$HOME/abin
+export PATH=$AFNIDIR:$PATH
+
+export ANTSPATH=$HOME/antsbin
+export PATH=$ANTSPATH:$PATH
+
+
+export FREESURFER_HOME=/Applications/freesurfer
+export SUBJECTS_DIR=/Applications/freesurfer/subjects
